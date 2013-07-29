@@ -4,5 +4,5 @@ dotfiles
 Hodduc's dotfiles
 
   Type:
-
-  curl -L dot.hodduc.net | bash
+  
+    curl -L http://dot.hodduc.net | bash
