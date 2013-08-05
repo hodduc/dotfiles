@@ -5,17 +5,17 @@
 # 2013-07-29
 
 # Check prerequisite
-if [ ! -x /bin/tar -o -x /usr/bin/tar ]; then
+if [ ! -x /bin/tar ] && [ ! -x /usr/bin/tar ]; then
     echo 'Install tar/gz to continue.'
     exit 1
 fi
 
-if [ ! -x /usr/bin/curl -o -x /bin/curl ]; then
+if [ ! -x /usr/bin/curl ] && [ ! -x /bin/curl ]; then
     echo 'Install curl to continue.'
     exit 1
 fi
 
-if [ ! -x /usr/bin/git -o -x /bin/git ]; then
+if [ ! -x /usr/bin/git ] && [ ! -x /bin/git ]; then
     echo 'Install git to continue.'
     exit 1
 fi
