@@ -42,6 +42,11 @@ echo 'Done.'
 
 # Install gitconfig
 
+# Install oh-my-zsh
+echo -n 'Install oh-my-zsh ...'
+git clone https://github.com/robbyrussell/oh-my-zsh $HOME/.oh-my-zsh
+cp $WORK_DIR/zshrc $HOME/.zshrc
+echo 'Done. Restart your shell.'
 
 # Clean up
 rm -rf $WORK_DIR

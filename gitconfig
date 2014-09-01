@@ -1,0 +1,19 @@
+[alias]
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    ll = log -U -n 1
+    co = checkout
+    ci = commit -v
+    ri = rebase -i
+    chp = cherry-pick -ex
+    st = status
+    br = branch
+    re = rebase
+[color]
+    ui = true
+[user]
+    name = Joonsung Lee
+    email = hodduc@sparcs.org
+[core]
+    editor = vim
