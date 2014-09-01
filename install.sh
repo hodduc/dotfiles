@@ -41,11 +41,18 @@ vim +BundleInstall +qall
 echo 'Done.'
 
 # Install gitconfig
+rm -f $HOME/.gitconfig
+cp $WORK_DIR/gitconfig $HOME/.gitconfig
 
 # Install oh-my-zsh
 echo -n 'Install oh-my-zsh ...'
+
+rm -rf $HOME/.oh-my-zsh
+rm -f $HOME/.zshrc
+
 git clone https://github.com/robbyrussell/oh-my-zsh $HOME/.oh-my-zsh
 cp $WORK_DIR/zshrc $HOME/.zshrc
+chsh -s /bin/zsh
 echo 'Done. Restart your shell.'
 
 # Clean up
