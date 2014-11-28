@@ -44,6 +44,10 @@ echo 'Done.'
 rm -f $HOME/.gitconfig
 cp $WORK_DIR/gitconfig $HOME/.gitconfig
 
+# Install mavenrc
+rm -f $HOME/.mavenrc
+cp $WORK_DIR/mavenrc $HOME/.mavenrc
+
 # Install oh-my-zsh
 echo -n 'Install oh-my-zsh ...'
 
