@@ -59,6 +59,9 @@ cp $WORK_DIR/zshrc $HOME/.zshrc
 chsh -s /bin/zsh
 echo 'Done. Restart your shell.'
 
+# Create GO root directory
+mkdir -p $HOME/go
+
 # Clean up
 rm -rf $WORK_DIR
 exit

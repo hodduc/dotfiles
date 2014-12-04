@@ -54,7 +54,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/rvm/gems/ruby-2.0.0-p451/bin:/usr/local/rvm/gems/ruby-2.0.0-p451@global/bin:/usr/local/rvm/rubies/ruby-2.0.0-p451/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/rvm/bin"
+export PATH="/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/rvm/bin:$PATH"
+export PATH="/usr/local/rvm/gems/ruby-2.0.0-p451/bin:/usr/local/rvm/gems/ruby-2.0.0-p451@global/bin:/usr/local/rvm/rubies/ruby-2.0.0-p451/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/Cellar/less/458/bin:$PATH"
+export PATH="/usr/local/Cellar/vim/7.4.488/bin:$PATH"
+export PATH="/usr/local/Cellar/ctags/5.8/bin:$PATH"
+export PATH="/Users/hodduc/repos/depot_tools:$PATH"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -76,3 +82,9 @@ export PATH="/usr/local/rvm/gems/ruby-2.0.0-p451/bin:/usr/local/rvm/gems/ruby-2.
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+
+export GOPATH=$HOME/go/
+
+alias jsonp="python -m json.tool"
+alias clearvimswp="rm -rf ~/.vim/tmp/*"
