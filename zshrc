@@ -54,12 +54,22 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+function load_brew_package {
+	addpath="$(brew --prefix $1 2>/dev/null)"
+	if [[ $? == 0 ]]; then
+		export PATH="$addpath/$2:$PATH"
+	fi
+}
+
 export PATH="/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/rvm/bin:$PATH"
 export PATH="/usr/local/rvm/gems/ruby-2.0.0-p451/bin:/usr/local/rvm/gems/ruby-2.0.0-p451@global/bin:/usr/local/rvm/rubies/ruby-2.0.0-p451/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/Cellar/less/458/bin:$PATH"
-export PATH="/usr/local/Cellar/vim/7.4.488/bin:$PATH"
-export PATH="/usr/local/Cellar/ctags/5.8/bin:$PATH"
 export PATH="/Users/hodduc/repos/depot_tools:$PATH"
+load_brew_package less bin
+load_brew_package vim bin
+load_brew_package ctags bin
+load_brew_package coreutils libexec/gnubin
+
+alias ls="ls --color=auto"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
