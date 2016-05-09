@@ -12,6 +12,7 @@ Plug 'tpope/vim-sensible'
 Plug 'molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-vinegar'
 " Plug 'fholgado/minibufexpl.vim'
@@ -44,7 +45,7 @@ runtime! plugin/sensible.vim
 "" vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'powerlineish'
+" let g:airline_theme = 'powerlineish'
 
 "" vim-go
 let g:go_fmt_command = "goimports"
@@ -84,7 +85,10 @@ set sol sel=inclusive mps+=<:>            " -- moving around
 set ut=10 uc=200                          " -- swap control
 set report=0 lpl wmnu                     " -- misc.
 
+set cursorline                            " -- highlight current line
+
 "" filetype-specific configurations
+au FileType cpp setl ts=2 sw=2 sts=2 et
 au FileType python setl ts=8 sw=4 sts=4 et
 au Filetype text setl tw=80
 au FileType javascript,jsp setl cin
@@ -102,3 +106,7 @@ set list listchars=tab:»\ ,trail:·,extends:>,precedes:<,nbsp:+
 " Key mapping ----------------------------------------------------------------
 nmap <silent> <C-j> :bn<CR>
 nmap <silent> <C-k> :bN<CR>
+nmap mv :set mouse=v<CR>
+nmap ma :set mouse=a<CR>
+nmap <silent> <C-h> :e %<.h<CR>
+nmap <silent> <C-l> :e %<.cc<CR>
