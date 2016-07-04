@@ -22,9 +22,19 @@ Plug 'klen/python-mode'
 Plug 'fatih/vim-go'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'cstrahan/vim-capnp'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'alvan/vim-closetag'
 
 "" Syntactic Helpers
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 call plug#end()
 
@@ -70,6 +80,21 @@ let g:pymode_lint_options_pylint = {'max-line-length': g:pymode_options_max_line
 let g:ycm_min_num_of_chars_for_completion = 99
 let g:ycm_key_invoke_completion = '<C-l>'
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+
+"" vim-closetag
+let g:closetag_filenames = "*.html,*.xhtml,*.jsx,*.js"
+
+" If popup menu is visible, select and insert next item
+" Otherwise, insert tab character
+" Ref: https://github.com/rafi/vim-config/blob/master/config/plugins/deoplete.vim
+
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>"
+  \ : "\<Tab>"
+"  \ deoplete#mappings#manual_complete()
+
 
 " Global settings ------------------------------------------------------------
 "" Overrides vim-sensible. See `:help ttimeoutlen`.
@@ -87,11 +112,13 @@ set report=0 lpl wmnu                     " -- misc.
 
 set cursorline                            " -- highlight current line
 
+set autoread                              " -- auto reload when file has changed outside of vim
+
 "" filetype-specific configurations
 au FileType cpp setl ts=2 sw=2 sts=2 et
 au FileType python setl ts=8 sw=4 sts=4 et
 au Filetype text setl tw=80
-au FileType javascript,jsp setl cin
+au FileType javascript,jsp,jsx setl cin ts=2 sts=2 sw=2 et
 au FileType html,htmldjango setl ts=2 sts=2 sw=2 et
 au FileType go setl ts=4 sts=4 sw=4
 au BufNewFile,BufRead *.gbp setf json
