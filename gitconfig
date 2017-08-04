@@ -1,6 +1,28 @@
+[color]
+    ui = true
+
+[user]
+    name = Joonsung Lee
+    email = hodduc@hodduc.net
+
+[core]
+    editor = nvim
+    quotepath = false
+    commentchar = ";"
+
+[diff]
+    compactionHeuristic = true
+
+[url "git@github.com:"]
+    pushinsteadof = "git://github.com/"
+    pushinsteadof = "https://github.com/"
+
 [alias]
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+#    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+#    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lol = log --graph --decorate --pretty=format:'%C(yellow)%h %C(green)(%ar) %C(cyan)%an %C(bold white)|%C(reset) %C(white)%s%C(reset)%C(auto)%d%C(reset)' --abbrev-commit
+    lola = log --graph --decorate --pretty=format:'%C(yellow)%h %C(green)(%ar) %C(cyan)%an %C(bold white)|%C(reset) %C(white)%s%C(reset)%C(auto)%d%C(reset)' --abbrev-commit --all
+    lolr = log --graph --decorate --pretty=format:'%C(yellow)%h %C(green)(%ar) %C(cyan)%an %C(bold white)|%C(reset) %C(white)%s%C(reset)%C(auto)%d%C(reset)' --abbrev-commit --exclude=refs/heads/master --exclude=refs/remotes/origin/master --exclude=refs/remotes/origin/alpharun --exclude=refs/remotes/origin/HEAD --exclude=refs/tags/v2* --all
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     ll = log -U -n 1
     co = checkout
@@ -10,13 +32,5 @@
     st = status
     br = branch
     re = rebase
-[color]
-    ui = true
-[user]
-    name = Joonsung Lee
-    email = hodduc@sparcs.org
-[core]
-    editor = vim
-[url "git@github.com:"]
-    pushinsteadof = "git://github.com/"
-    pushinsteadof = "https://github.com/"
+    h = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    mm = merge --no-ff --log
