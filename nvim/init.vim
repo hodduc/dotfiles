@@ -118,7 +118,7 @@ set sol sel=inclusive mps+=<:>            " -- moving around
 set ut=10 uc=200                          " -- swap control
 set report=0 lpl wmnu                     " -- misc.
 
-set cursorline                            " -- highlight current line
+" set cursorline                            " -- highlight current line  --slow!
 
 set autoread                              " -- auto reload when file has changed outside of vim
 set exrc secure                           " -- allow project-specific .vimrc
