@@ -3,13 +3,13 @@
 
 
 " Plugins --------------------------------------------------------------------
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 "" Base plugins
 Plug 'tpope/vim-sensible'
 
 "" UI integration & Color Schemes
-Plug 'molokai'
+Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
