@@ -33,9 +33,10 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-jedi'
+"Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+"Plug 'zchee/deoplete-go', { 'do': 'make'}
+"Plug 'zchee/deoplete-jedi'
+Plug 'roxma/nvim-completion-manager'
 
 call plug#end()
 
@@ -83,8 +84,8 @@ let g:pymode_lint_options_pylint = {'max-line-length': g:pymode_options_max_line
 " let g:ycm_key_invoke_completion = '<C-l>'
 
 "" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 "" vim-closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.jsx,*.js"
