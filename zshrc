@@ -117,3 +117,5 @@ eval "$(hub alias -s)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
+
+export GPG_TTY=$(tty)

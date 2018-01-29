@@ -28,25 +28,20 @@ rm -rf $WORK_DIR && mkdir -p $WORK_DIR
 git clone --recursive https://github.com/hodduc/dotfiles $WORK_DIR/
 
 # Install vimscript
-echo -n 'Install vimscript ...'
+echo -n 'Install neovim scripts...'
 
-rm -f $HOME/.vimrc
-cp $WORK_DIR/vim/vimrc $HOME/.vimrc
+curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir -p $HOME/.config/nvim/init.vim
+ln -s $HOME/.nvimrc $HOME/.config/nvim/init.vim
 
-rm -rf $HOME/.vim
-mkdir -p $HOME/.vim
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim +BundleInstall +qall
+nvim +PlugInstall +qall
 
-echo 'Done.'
+echo 'Done. You need to install neovim manually.'
 
 # Install gitconfig
 rm -f $HOME/.gitconfig
 cp $WORK_DIR/gitconfig $HOME/.gitconfig
-
-# Install mavenrc
-rm -f $HOME/.mavenrc
-cp $WORK_DIR/mavenrc $HOME/.mavenrc
 
 # Install oh-my-zsh
 echo -n 'Install oh-my-zsh ...'
