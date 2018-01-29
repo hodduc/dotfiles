@@ -48,53 +48,72 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git aws brew)
+plugins=(git aws brew kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-function load_brew_package {
-	addpath="$(brew --prefix $1 2>/dev/null)"
-	if [[ $? == 0 ]]; then
-		export PATH="$addpath/$2:$PATH"
-	fi
-}
-
-export PATH="/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/rvm/bin:$PATH"
-export PATH="/usr/local/rvm/gems/ruby-2.0.0-p451/bin:/usr/local/rvm/gems/ruby-2.0.0-p451@global/bin:/usr/local/rvm/rubies/ruby-2.0.0-p451/bin:/usr/local/sbin:$PATH"
-export PATH="/Users/hodduc/repos/depot_tools:$PATH"
-load_brew_package less bin
-load_brew_package vim bin
-load_brew_package ctags bin
-load_brew_package coreutils libexec/gnubin
-
 alias ls="ls --color=auto"
+export XDG_CONFIG_HOME="$HOME/.config"
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-#
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-  source /usr/local/bin/virtualenvwrapper.sh
+# Replace ag with https://github.com/aykamko/tag
+# Replace ack with ag
+if hash ag 2>/dev/null; then
+  export TAG_CMD_FMT_STRING="nvim {{.Filename}} +{{.LineNumber}}"
+  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
+  alias ag=tag
+  alias ack=ag
 fi
 
+# Add brew-related packages to PATH
+brew_prefix="$(brew --prefix)"
 
-export GOPATH=$HOME/go/
+function load_brew_package {
+	export PATH="$brew_prefix/opt/$1:$PATH"
+}
 
-alias jsonp="python -m json.tool"
+function load_brew_library {
+	export LIBRARY_PATH="$brew_prefix/opt/$1:$LIBRARY_PATH"
+}
+
+function brew.info {
+  grep desc $brew_prefix/Library/Formula/*.rb | perl -ne 'm{^.*/(.*?)\.rb.*?\"(.*)"$} and print "$1|$2\n"' | column -t -s '|' | fzf --reverse
+}
+
+export PATH="/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH"
+
+load_brew_package less/bin
+load_brew_package vim/bin
+load_brew_package ctags/bin
+load_brew_package coreutils/libexec/gnubin
+load_brew_package gzip/bin
+load_brew_library leveldb/lib
+
+# Set GOPATH
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+
+# Set virtualenvwrapper to use python3 default
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
+
+# Aliases
 alias clearvimswp="rm -rf ~/.vim/tmp/*"
+alias dnsreset="sudo networksetup -setdnsservers Ethernet 8.8.8.8 8.8.4.4"
+alias vi=nvim
+
+# Iterm2-shell integration
+source /Users/hodduc/.iterm2_shell_integration.zsh
+
+# Use fzf if installed
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Wrap git with hub
+eval "$(hub alias -s)"
+
+# Override local zshrc
+[ -f ~/.zshrc_local ] && source ~/.zshrc_local
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
