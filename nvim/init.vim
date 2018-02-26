@@ -18,16 +18,18 @@ Plug 'tpope/vim-vinegar'
 " Plug 'fholgado/minibufexpl.vim'
 
 "" Language-specific packs
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'fatih/vim-go'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'cstrahan/vim-capnp'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'alvan/vim-closetag'
+Plug 'posva/vim-vue'
 
 "" Syntactic Helpers
 " Plug 'Valloric/YouCompleteMe'
+Plug 'w0rp/ale'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -72,7 +74,7 @@ let g:pymode_rope = 0
 let g:pymode_lint = 1
 let g:pymode_python = 'python3'
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
-let g:pymode_lint_ignore = "E501,E261,C0111,W0401,W0614,R0201,W0511,C0302,R0911,C0302,R0914,W0212"
+let g:pymode_lint_ignore = ["E501","E261","E266","C0111","W0401","W0614","R0201","W0511","C0302","R0911","C0302","R0914","W0212"]
 let g:pymode_options_max_line_length = 129
 let g:pymode_lint_unmodified = 1
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
@@ -92,6 +94,16 @@ let g:closetag_filenames = "*.html,*.xhtml,*.jsx,*.js"
 
 "" vim-jsx
 let g:jsx_ext_required = 0
+
+"" ale
+" disable python linter to avoid conflict with python-mode
+let g:ale_linters = {
+\   'python': [],
+\}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 1
+let g:ale_open_list = 1
+let g:ale_list_window_size = 6
 
 " If popup menu is visible, select and insert next item
 " Otherwise, insert tab character
@@ -125,6 +137,7 @@ set exrc secure                           " -- allow project-specific .vimrc
 
 "" filetype-specific configurations
 au FileType c,cpp setl ts=2 sw=2 sts=2 et
+au FileType vue setl ts=2 sw=2 sts=2 et
 au FileType python setl ts=8 sw=4 sts=4 et
 au Filetype text setl tw=80
 au FileType javascript,jsp,jsx setl cin ts=2 sts=2 sw=2 et

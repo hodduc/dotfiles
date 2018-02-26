@@ -59,11 +59,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # Replace ag with https://github.com/aykamko/tag
 # Replace ack with ag
-if hash ag 2>/dev/null; then
+if hash rg 2>/dev/null; then
+  export TAG_SEARCH_PROG=rg
   export TAG_CMD_FMT_STRING="nvim {{.Filename}} +{{.LineNumber}}"
   tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
-  alias ag=tag
-  alias ack=ag
+  alias ack=tag
 fi
 
 # Add brew-related packages to PATH
