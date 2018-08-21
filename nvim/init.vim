@@ -99,11 +99,14 @@ let g:jsx_ext_required = 0
 " disable python linter to avoid conflict with python-mode
 let g:ale_linters = {
 \   'python': [],
+\   'go': ['gometalinter', 'go vet'],
 \}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_open_list = 1
 let g:ale_list_window_size = 6
+let g:ale_echo_msg_format = '%code: %%s (%linter%)'
+let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --enable=gofmt --enable=goimports'  " --enable=errcheck 
 
 " If popup menu is visible, select and insert next item
 " Otherwise, insert tab character
@@ -116,6 +119,7 @@ inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>"
 "" ctags
 set tags=./tags,tags;$HOME  " find "tags" file from CWD to $HOME
 
+
 " Global settings ------------------------------------------------------------
 "" Overrides vim-sensible. See `:help ttimeoutlen`.
 """ This option stands to accept escape characters (i.e. Page UP, ... ) on 
@@ -124,7 +128,7 @@ set tags=./tags,tags;$HOME  " find "tags" file from CWD to $HOME
 set ttimeoutlen=0
 
 set nu nuw=6 ru sc wrap ls=2 lz           " -- appearance
-set noet bs=2 ts=8 sw=8 sts=0  	          " -- tabstop
+set noet bs=2 ts=2 sw=2 sts=0  	          " -- tabstop
 set noai nosi hls is ic cf ws scs magic   " -- search
 set sol sel=inclusive mps+=<:>            " -- moving around
 set ut=10 uc=200                          " -- swap control
@@ -136,13 +140,14 @@ set autoread                              " -- auto reload when file has changed
 set exrc secure                           " -- allow project-specific .vimrc
 
 "" filetype-specific configurations
-au FileType c,cpp setl ts=2 sw=2 sts=2 et
+au FileType c,cpp setl ts=2 sw=2 sts=2
 au FileType vue setl ts=2 sw=2 sts=2 et
 au FileType python setl ts=8 sw=4 sts=4 et
 au Filetype text setl tw=80
 au FileType javascript,jsp,jsx setl cin ts=2 sts=2 sw=2 et
 au FileType html,htmldjango setl ts=2 sts=2 sw=2 et
 au FileType go setl ts=4 sts=4 sw=4
+au FileType ruby setl ts=2 sts=2 sw=2 et
 au BufNewFile,BufRead *.gbp setf json
 au BufNewFile,BufRead *.phps,*.php3s setf php
 
@@ -153,9 +158,15 @@ au Syntax * syn sync minlines=500 maxlines=1000
 set list listchars=tab:»\ ,trail:·,extends:>,precedes:<,nbsp:+
 
 " Key mapping ----------------------------------------------------------------
-nmap <silent> <C-j> :bn<CR>
-nmap <silent> <C-k> :bN<CR>
-nmap mv :set mouse=v<CR>
-nmap ma :set mouse=a<CR>
-nmap <silent> <C-h> :e %<.h<CR>
-nmap <silent> <C-l> :e %<.cc<CR>
+" change leader key to Space: Nobody uses Space for navigation
+let mapleader = "\<Space>"
+
+" useful keymaps
+nnoremap <silent> <C-j> :bn<CR>
+nnoremap <silent> <C-k> :bN<CR>
+nnoremap mv :set mouse=v<CR>
+nnoremap ma :set mouse=a<CR>
+nnoremap <silent> <C-h> :e %<.h<CR>
+nnoremap <silent> <C-l> :e %<.cc<CR>
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d

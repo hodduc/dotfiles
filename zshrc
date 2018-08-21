@@ -48,7 +48,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git aws brew kubectl)
+plugins=(git aws brew kubectl docker terraform z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,3 +119,4 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
 
 export GPG_TTY=$(tty)
+export PIPENV_VENV_IN_PROJECT=1
