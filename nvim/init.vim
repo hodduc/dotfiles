@@ -26,6 +26,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'alvan/vim-closetag'
 Plug 'posva/vim-vue'
+Plug 'hashivim/vim-terraform'
 
 "" Syntactic Helpers
 " Plug 'Valloric/YouCompleteMe'
@@ -79,6 +80,9 @@ let g:pymode_options_max_line_length = 129
 let g:pymode_lint_unmodified = 1
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_lint_options_pylint = {'max-line-length': g:pymode_options_max_line_length}
+
+"" vim-terraform
+let g:terraform_fmt_on_save = 1
 
 "" YouCompleteMe
 """ turn off YouCompleteMe identifier based completion
@@ -148,6 +152,7 @@ au FileType javascript,jsp,jsx setl cin ts=2 sts=2 sw=2 et
 au FileType html,htmldjango setl ts=2 sts=2 sw=2 et
 au FileType go setl ts=4 sts=4 sw=4
 au FileType ruby setl ts=2 sts=2 sw=2 et
+au FileType terraform setl ts=2 sts=2 sw=2 et
 au BufNewFile,BufRead *.gbp setf json
 au BufNewFile,BufRead *.phps,*.php3s setf php
 
