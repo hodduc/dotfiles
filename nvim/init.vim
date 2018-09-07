@@ -162,6 +162,25 @@ au Syntax * syn sync minlines=500 maxlines=1000
 
 set list listchars=tab:»\ ,trail:·,extends:>,precedes:<,nbsp:+
 
+"" Specify python host for neovim. The 'neovim' package should be installed in
+"" that environment. (from wookayin/dotfiles)
+let g:python_host_prog  = '/usr/local/bin/python'
+if empty(glob(g:python_host_prog))
+  " Fallback if not exists
+  let g:python_host_prog = '/usr/bin/python'
+endif
+
+let g:python3_host_prog = '/usr/local/bin/python3'
+if empty(glob(g:python3_host_prog))
+  " Fallback if not exists
+  let g:python3_host_prog = '/usr/bin/python3'
+endif
+
+if empty(glob(g:python3_host_prog)) && executable("python3")
+  " Fallback to local/venv python3 if not exists
+  let g:python3_host_prog = substitute(system("which python3"), '\n\+$', '', '')
+endif
+
 " Key mapping ----------------------------------------------------------------
 " change leader key to Space: Nobody uses Space for navigation
 let mapleader = "\<Space>"
