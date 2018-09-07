@@ -120,3 +120,4 @@ complete -o nospace -C /usr/local/bin/vault vault
 
 export GPG_TTY=$(tty)
 export PIPENV_VENV_IN_PROJECT=1
+export EDITOR=nvim
