@@ -71,7 +71,9 @@ let g:go_highlight_structs = 1
 
 "" python-mode
 let g:pymode_folding = 0
-let g:pymode_rope = 0
+let g:pymode_rope = 1
+let g:pymode_rope_goto_definition_bind = '<leader>g'
+let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_lint = 1
 let g:pymode_python = 'python3'
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
