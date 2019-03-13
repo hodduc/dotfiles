@@ -210,3 +210,7 @@ nnoremap <silent> <C-h> :e %<.h<CR>
 nnoremap <silent> <C-l> :e %<.cc<CR>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+
+if filereadable(glob("~/.nvimrc_local"))
+  source ~/.nvimrc_local
+endif
