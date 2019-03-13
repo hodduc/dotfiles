@@ -155,6 +155,10 @@ set report=0 lpl wmnu                     " -- misc.
 set autoread                              " -- auto reload when file has changed outside of vim
 set exrc secure                           " -- allow project-specific .vimrc
 
+set undodir=~/.vim/undodir                " -- preserve undo history
+set undofile                              " -- (see :help undo-persistence)
+
+
 "" filetype-specific configurations
 au FileType c,cpp setl ts=2 sw=2 sts=2
 au FileType vue setl ts=2 sw=2 sts=2 et
