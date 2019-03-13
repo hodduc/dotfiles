@@ -39,7 +39,12 @@ endfunction
 "Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 "Plug 'zchee/deoplete-go', { 'do': 'make'}
 "Plug 'zchee/deoplete-jedi'
-Plug 'roxma/nvim-completion-manager'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-go'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-bufword'
+Plug 'roxma/nvim-yarp'
 
 call plug#end()
 
@@ -121,6 +126,11 @@ let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --ena
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>"
   \ : "\<Tab>"
 "  \ deoplete#mappings#manual_complete()
+
+"" ncm2
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 "" ctags
 set tags=./tags,tags;$HOME  " find "tags" file from CWD to $HOME
