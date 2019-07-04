@@ -29,23 +29,14 @@ Plug 'posva/vim-vue'
 Plug 'hashivim/vim-terraform'
 Plug 'leafgarland/typescript-vim'
 
-"" Syntactic Helpers
+"" Generic Syntactic Helpers
 " Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'w0rp/ale'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-
-"Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-"Plug 'zchee/deoplete-go', { 'do': 'make'}
-"Plug 'zchee/deoplete-jedi'
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-go'
-"Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-bufword'
-Plug 'roxma/nvim-yarp'
 
 call plug#end()
 
@@ -73,6 +64,8 @@ let g:go_fmt_command = "goimports"
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_structs = 1
+let g:go_def_mapping_enabled = 0  " replaced with coc.nvim
+let g:go_info_mode='gopls'
 " let g:go_auto_type_info = 1
 
 "" python-mode
@@ -132,14 +125,9 @@ let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --ena
 " Otherwise, insert tab character
 " Ref: https://github.com/rafi/vim-config/blob/master/config/plugins/deoplete.vim
 
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>"
-  \ : "\<Tab>"
+" inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>"
+"   \ : "\<Tab>"
 "  \ deoplete#mappings#manual_complete()
-
-"" ncm2
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
 
 "" ctags
 set tags=./tags,tags;$HOME  " find "tags" file from CWD to $HOME
@@ -223,3 +211,5 @@ vnoremap <leader>d "_d
 if filereadable(glob("~/.nvimrc_local"))
   source ~/.nvimrc_local
 endif
+
+source ~/repos/dotfiles/nvim/coc_config.vim
