@@ -27,6 +27,7 @@ Plug 'mxw/vim-jsx'
 Plug 'alvan/vim-closetag'
 Plug 'posva/vim-vue'
 Plug 'hashivim/vim-terraform'
+Plug 'leafgarland/typescript-vim'
 
 "" Syntactic Helpers
 " Plug 'Valloric/YouCompleteMe'
@@ -81,7 +82,7 @@ let g:pymode_rope_goto_definition_bind = '<leader>g'
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_lint = 1
 let g:pymode_python = 'python3'
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_lint_ignore = ["E501","E261","E266","C0111","W0401","W0614","R0201","W0511","C0302","R0911","C0302","R0914","W0212"]
 let g:pymode_options_max_line_length = 129
 let g:pymode_lint_unmodified = 1
@@ -110,14 +111,21 @@ let g:jsx_ext_required = 0
 " disable python linter to avoid conflict with python-mode
 let g:ale_linters = {
 \   'python': [],
-\   'go': ['gometalinter', 'go vet'],
+\   'go': ['gometalinter', 'go vet', 'gopls'],
+\   'javascript': ['eslint'],
 \}
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
 let g:ale_list_window_size = 6
 let g:ale_echo_msg_format = '%code: %%s (%linter%)'
-let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --enable=gofmt --enable=goimports'  " --enable=errcheck 
+let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --enable=gofmt --enable=goimports --exclude="not gofmted with -s"'  " --enable=errcheck 
 
 " If popup menu is visible, select and insert next item
 " Otherwise, insert tab character
