@@ -48,7 +48,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git aws brew kubectl docker terraform z)
+plugins=(git aws brew kubectl docker terraform z dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -121,3 +121,5 @@ complete -o nospace -C /usr/local/bin/vault vault
 export GPG_TTY=$(tty)
 export PIPENV_VENV_IN_PROJECT=1
 export EDITOR=nvim
+
+export RIPGREP_CONFIG_PATH=$HOME/repos/dotfiles/ripgreprc
