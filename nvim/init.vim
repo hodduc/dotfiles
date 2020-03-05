@@ -158,6 +158,19 @@ set exrc secure                           " -- allow project-specific .vimrc
 set undodir=~/.vim/undodir                " -- preserve undo history
 set undofile                              " -- (see :help undo-persistence)
 
+" exclude quickfix from ':bnext', ':bprevious'
+" See :help 'buflisted'
+
+augroup qf
+  autocmd!
+  autocmd FileType qf set nobuflisted
+augroup END
+
+augroup netrw
+  autocmd!
+  autocmd FileType netrw set nobuflisted
+augroup END
+
 
 "" filetype-specific configurations
 au FileType c,cpp setl ts=2 sw=2 sts=2
