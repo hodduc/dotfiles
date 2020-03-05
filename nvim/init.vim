@@ -14,7 +14,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-dirvish'
+
 " Plug 'fholgado/minibufexpl.vim'
 
 "" Language-specific packs
@@ -28,6 +30,7 @@ Plug 'alvan/vim-closetag'
 Plug 'posva/vim-vue'
 Plug 'hashivim/vim-terraform'
 Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 
 "" Generic Syntactic Helpers
 " Plug 'Valloric/YouCompleteMe'
@@ -161,7 +164,7 @@ au FileType c,cpp setl ts=2 sw=2 sts=2
 au FileType vue setl ts=2 sw=2 sts=2 et
 au FileType python setl ts=8 sw=4 sts=4 et
 au Filetype text setl tw=80
-au FileType javascript,jsp,jsx setl cin ts=2 sts=2 sw=2 et
+au FileType typescript.tsx,typescript,javascript,jsp,jsx setl cin ts=2 sts=2 sw=2 et
 au FileType html,htmldjango setl ts=2 sts=2 sw=2 et
 au FileType go setl ts=4 sts=4 sw=4
 au FileType ruby setl ts=2 sts=2 sw=2 et
