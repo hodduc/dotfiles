@@ -52,9 +52,11 @@ plugins=(git aws brew kubectl docker terraform z dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
+# Load cargo if exists
+[ -f ~/.cargo/env ] && source ~/.cargo/env
+
 # User configuration
 
-alias ls="ls --color=auto"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Replace ag with https://github.com/aykamko/tag
@@ -65,6 +67,20 @@ if hash rg 2>/dev/null; then
   tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
   alias ack=tag
 fi
+
+# Replace ls with https://github.com/ogham/exa
+if hash exa 2>/dev/null; then
+	export EXA_COLORS="da=0:uu=0"  # disable datetime/user color
+	alias ls="exa -F"
+else
+	alias ls="ls --color=auto"
+fi
+
+# Replace cat with https://github.com/sharkdp/bat
+if hash bat 2>/dev/null; then
+	alias cat=bat
+fi
+
 
 # Add brew-related packages to PATH
 brew_prefix="$(brew --prefix)"
