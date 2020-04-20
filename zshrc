@@ -78,7 +78,7 @@ fi
 
 # Replace cat with https://github.com/sharkdp/bat
 if hash bat 2>/dev/null; then
-	alias cat=bat
+	alias cat="bat -pp"  # disable line number & paging
 fi
 
 
