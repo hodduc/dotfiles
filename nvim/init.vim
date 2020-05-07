@@ -229,3 +229,4 @@ if filereadable(glob("~/.nvimrc_local"))
 endif
 
 source ~/repos/dotfiles/nvim/coc_config.vim
+redrawstatus  " to fix a bug on coloring command line (nvim 0.4.3 maybe?)
