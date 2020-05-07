@@ -9,7 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-sensible'
 
 "" UI integration & Color Schemes
-Plug 'tomasr/molokai'
+Plug 'fatih/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -31,6 +31,7 @@ Plug 'posva/vim-vue'
 Plug 'hashivim/vim-terraform'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'PProvost/vim-ps1'
 
 "" Generic Syntactic Helpers
 " Plug 'Valloric/YouCompleteMe'
