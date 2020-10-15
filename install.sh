@@ -5,43 +5,39 @@
 # 2013-07-29
 
 # Check prerequisite
-if [ ! -x /bin/tar ] && [ ! -x /usr/bin/tar ]; then
-    echo 'Install tar/gz to continue.'
+requisite=("curl" "git" "nvim")
+for req in "${requisite[@]}"; do
+  if ! command -v $req &> /dev/null; then
+    echo "Install $req to continue."
     exit 1
-fi
-
-if [ ! -x /usr/bin/curl ] && [ ! -x /bin/curl ]; then
-    echo 'Install curl to continue.'
-    exit 1
-fi
-
-if [ ! -x /usr/bin/git ] && [ ! -x /bin/git ]; then
-    echo 'Install git to continue.'
-    exit 1
-fi
+  fi
+done
 
 # Generate working dir
-WORK_DIR=$HOME/.dotfiles_tmp
-rm -rf $WORK_DIR && mkdir -p $WORK_DIR
+WORK_DIR=$HOME/repos
+CONF_DIR=$HOME/.config/nvim
+mkdir -p $WORK_DIR
+mkdir -p $CONF_DIR
 
 # Clone dotfiles repo from github and extract it
-git clone --recursive https://github.com/hodduc/dotfiles $WORK_DIR/
+git clone --recursive https://github.com/hodduc/dotfiles $WORK_DIR/dotfiles
 
 # Install vimscript
 echo -n 'Install neovim scripts...'
 
 curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-mkdir -p $HOME/.config/nvim/init.vim
-ln -s $HOME/.nvimrc $HOME/.config/nvim/init.vim
+ln -s $WORK_DIR/dotfiles/nvim/init.vim $CONF_DIR/init.vim
+ln -s $WORK_DIR/dotfiles/nvim/coc_config.vim $CONF_DIR/coc_config.vim
+ln -s $CONF_DIR/init.vim $HOME/.nvimrc
 
 nvim +PlugInstall +qall
 
-echo 'Done. You need to install neovim manually.'
+echo 'Done.'
 
 # Install gitconfig
 rm -f $HOME/.gitconfig
-cp $WORK_DIR/gitconfig $HOME/.gitconfig
+ln -s $WORK_DIR/dotfiles/gitconfig $HOME/.gitconfig
 
 # Install oh-my-zsh
 echo -n 'Install oh-my-zsh ...'
@@ -50,13 +46,6 @@ rm -rf $HOME/.oh-my-zsh
 rm -f $HOME/.zshrc
 
 git clone https://github.com/robbyrussell/oh-my-zsh $HOME/.oh-my-zsh
-cp $WORK_DIR/zshrc $HOME/.zshrc
+ln -s $WORK_DIR/dotfiles/zshrc $HOME/.zshrc
 chsh -s /bin/zsh
 echo 'Done. Restart your shell.'
-
-# Create GO root directory
-mkdir -p $HOME/go
-
-# Clean up
-rm -rf $WORK_DIR
-exit

@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -48,7 +49,11 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git aws brew kubectl docker terraform z dotenv)
+plugins=(git aws docker terraform z dotenv)
+
+command -v kubectl &> /dev/null && plugins+=(kubectl)
+command -v brew &> /dev/null && plugins+=(brew)
+echo $plugins
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,52 +86,48 @@ if hash bat 2>/dev/null; then
 	alias cat="bat -pp"  # disable line number & paging
 fi
 
+if hash brew 2>/dev/null; then
+	# Add brew-related packages to PATH
+	brew_prefix="$(brew --prefix)"
 
-# Add brew-related packages to PATH
-brew_prefix="$(brew --prefix)"
+	function load_brew_package {
+		export PATH="$brew_prefix/opt/$1:$PATH"
+	}
 
-function load_brew_package {
-	export PATH="$brew_prefix/opt/$1:$PATH"
-}
+	function load_brew_library {
+		export LIBRARY_PATH="$brew_prefix/opt/$1:$LIBRARY_PATH"
+	}
 
-function load_brew_library {
-	export LIBRARY_PATH="$brew_prefix/opt/$1:$LIBRARY_PATH"
-}
+	function brew.info {
+		grep desc $brew_prefix/Library/Formula/*.rb | perl -ne 'm{^.*/(.*?)\.rb.*?\"(.*)"$} and print "$1|$2\n"' | column -t -s '|' | fzf --reverse
+	}
 
-function brew.info {
-  grep desc $brew_prefix/Library/Formula/*.rb | perl -ne 'm{^.*/(.*?)\.rb.*?\"(.*)"$} and print "$1|$2\n"' | column -t -s '|' | fzf --reverse
-}
-
-export PATH="/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH"
-
-load_brew_package less/bin
-load_brew_package vim/bin
-load_brew_package ctags/bin
-load_brew_package coreutils/libexec/gnubin
-load_brew_package gzip/bin
-load_brew_library leveldb/lib
-
-# Set GOPATH
-export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
+	load_brew_package less/bin
+	load_brew_package vim/bin
+	load_brew_package ctags/bin
+	load_brew_package coreutils/libexec/gnubin
+	load_brew_package gzip/bin
+	load_brew_library leveldb/lib
+fi
 
 # Set virtualenvwrapper to use python3 default
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
 # Aliases
 alias clearvimswp="rm -rf ~/.vim/tmp/*"
 alias dnsreset="sudo networksetup -setdnsservers Ethernet 8.8.8.8 8.8.4.4"
 alias vi=nvim
+alias kc=kubectl
 
 # Iterm2-shell integration
-source /Users/hodduc/.iterm2_shell_integration.zsh
+[ -f ~/.iterm2_shell_integration.zsh ] && source /Users/hodduc/.iterm2_shell_integration.zsh
 
 # Use fzf if installed
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Wrap git with hub
-eval "$(hub alias -s)"
+command -v hub &> /dev/null && eval "$(hub alias -s)"
 
 # Override local zshrc
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
