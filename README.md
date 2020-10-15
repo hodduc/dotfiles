@@ -5,4 +5,4 @@ Hodduc's dotfiles
 
   Type:
   
-    curl -L http://dot.hodduc.net | bash
+    curl -L https://raw.githubusercontent.com/hodduc/dotfiles/master/install.sh | bash
