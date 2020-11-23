@@ -1,1 +1,3 @@
 --glob=!vendor/**
+--glob=!.git
+--hidden
