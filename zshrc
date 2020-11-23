@@ -1,3 +1,6 @@
+# Load prelaod script if exists. Some oh-my-zsh plugins requires a binary exists in PATH (ex. kubectl)
+[ -f ~/.zshrc_preload ] && source ~/.zshrc_preload
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
@@ -53,7 +56,6 @@ plugins=(git aws docker terraform z dotenv)
 
 command -v kubectl &> /dev/null && plugins+=(kubectl)
 command -v brew &> /dev/null && plugins+=(brew)
-echo $plugins
 
 source $ZSH/oh-my-zsh.sh
 
@@ -71,6 +73,9 @@ if hash rg 2>/dev/null; then
   export TAG_CMD_FMT_STRING="nvim {{.Filename}} +{{.LineNumber}}"
   tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
   alias ack=tag
+
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
 # Replace ls with https://github.com/ogham/exa
