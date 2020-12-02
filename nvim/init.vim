@@ -222,19 +222,19 @@ nnoremap <silent> <C-j> :bn<CR>
 nnoremap <silent> <C-k> :bN<CR>
 nnoremap mv :set mouse=v<CR>
 nnoremap ma :set mouse=a<CR>
-nnoremap <silent> <C-h> :e %<.h<CR>
-nnoremap <silent> <C-l> :e %<.cc<CR>
+"nnoremap <silent> <C-h> :e %<.h<CR>
+"nnoremap <silent> <C-l> :e %<.cc<CR>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
 " keymaps for fzf.vim
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-m> :Rg<CR>
+nnoremap <silent> <C-l> :Rg<CR>
 
 " keymaps for dirvish + fzf
 " open fzf windows from current dirvish buffer (directory you are viewing)
 autocmd FileType dirvish nnoremap <buffer> <C-p> :Files %<CR>
-autocmd FileType dirvish nnoremap <buffer> <C-m> :RgDirvish<CR>
+autocmd FileType dirvish nnoremap <buffer> <C-l> :RgDirvish<CR>
 
 command! -bang -nargs=* RgDirvish
   \ call fzf#vim#grep(
