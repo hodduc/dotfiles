@@ -13,7 +13,8 @@ Plug 'fatih/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'tpope/vim-vinegar'
 Plug 'justinmk/vim-dirvish'
 
@@ -224,6 +225,20 @@ nnoremap <silent> <C-h> :e %<.h<CR>
 nnoremap <silent> <C-l> :e %<.cc<CR>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+
+" keymaps for fzf.vim
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-m> :Rg<CR>
+
+" keymaps for dirvish + fzf
+" open fzf windows from current dirvish buffer (directory you are viewing)
+autocmd FileType dirvish nnoremap <buffer> <C-p> :Files %<CR>
+autocmd FileType dirvish nnoremap <buffer> <C-m> :RgDirvish<CR>
+
+command! -bang -nargs=* RgDirvish
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': expand('%')}), <bang>0)
 
 if filereadable(glob("~/.nvimrc_local"))
   source ~/.nvimrc_local
