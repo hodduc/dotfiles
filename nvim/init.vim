@@ -17,6 +17,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Plug 'tpope/vim-vinegar'
 Plug 'justinmk/vim-dirvish'
+Plug 'airblade/vim-gitgutter'
 
 " Plug 'fholgado/minibufexpl.vim'
 
