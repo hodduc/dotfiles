@@ -56,6 +56,7 @@ plugins=(git aws docker terraform z dotenv)
 
 command -v kubectl &> /dev/null && plugins+=(kubectl)
 command -v brew &> /dev/null && plugins+=(brew)
+[ -f ~/.asdf/bin/asdf ] && plugins+=(asdf)
 
 source $ZSH/oh-my-zsh.sh
 
