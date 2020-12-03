@@ -245,8 +245,6 @@ if filereadable(glob("~/.nvimrc_local"))
   source ~/.nvimrc_local
 endif
 
-if filereadable(stdpath('config').'coc_config.vim')
-  source stdpath('config').'coc_config.vim'
-endif
+runtime coc_config.vim  " load coc config
 
 redrawstatus  " to fix a bug on coloring command line (nvim 0.4.3 maybe?)
