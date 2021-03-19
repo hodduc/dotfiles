@@ -146,3 +146,8 @@ export PIPENV_VENV_IN_PROJECT=1
 export EDITOR=nvim
 
 export RIPGREP_CONFIG_PATH=$HOME/repos/dotfiles/ripgreprc
+
+if [[ "$OSTYPE" == darwin* ]]; then
+	bindkey "^[^[[D" backward-word # option + <-
+	bindkey "^[^[[C" forward-word  # option + ->
+fi
