@@ -113,6 +113,8 @@ let g:ale_linters = {
 \   'python': [],
 \   'go': ['gometalinter', 'go vet', 'gopls'],
 \   'javascript': ['eslint'],
+\   'c': ['clang'],
+\   'cpp': ['clang', 'g++'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
@@ -126,6 +128,11 @@ let g:ale_open_list = 1
 let g:ale_list_window_size = 6
 let g:ale_echo_msg_format = '%code: %%s (%linter%)'
 let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --enable=gofmt --enable=goimports --exclude="not gofmted with -s"'  " --enable=errcheck 
+
+let g:ale_cpp_gcc_options = '-Wall -O2 --std=c++17'
+let g:ale_cpp_clang_options = '-Wall -O2 --std=c++17'
+let g:ale_cpp_cc_options = '-Wall -O2 --std=c++17'
+
 
 " If popup menu is visible, select and insert next item
 " Otherwise, insert tab character
