@@ -1,4 +1,5 @@
-# Load prelaod script if exists. Some oh-my-zsh plugins requires a binary exists in PATH (ex. kubectl)
+# Load asdf & prelaod script if exists. Some oh-my-zsh plugins requires a binary exists in PATH (ex. kubectl)
+[ -f ~/.asdf/bin/asdf ] && source ~/.asdf/asdf.sh
 [ -f ~/.zshrc_preload ] && source ~/.zshrc_preload
 
 # Path to your oh-my-zsh installation.
@@ -54,7 +55,7 @@ ZSH_THEME="steeef"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git aws docker terraform z dotenv)
 
-command -v kubectl &> /dev/null && plugins+=(kubectl)
+command -v kubectl &> /dev/null && plugins+=(kubectl kube-ps1)
 command -v brew &> /dev/null && plugins+=(brew)
 [ -f ~/.asdf/bin/asdf ] && plugins+=(asdf)
 
