@@ -2,6 +2,12 @@
 [ -f ~/.asdf/bin/asdf ] && source ~/.asdf/asdf.sh
 [ -f ~/.zshrc_preload ] && source ~/.zshrc_preload
 
+# Load zsh plugins using antibody
+[ -f ~/.zsh_plugins.sh ] && source ~/.zsh_plugins.sh
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
@@ -67,6 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 # Replace ag with https://github.com/aykamko/tag
 # Replace ack with ag
