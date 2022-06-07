@@ -13,8 +13,8 @@ Hodduc's dotfiles
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 
     asdf plugin add rust
-    asdf install rust 1.15.0
-    asdf global rust 1.15.0
+    asdf install rust 1.60.0
+    asdf global rust 1.60.0
 
     cargo install bat
     cargo install exa
