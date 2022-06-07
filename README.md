@@ -2,11 +2,14 @@ dotfiles
 ========
 
 Hodduc's dotfiles
+
   Prerequisite: NeoVim, git
+  
   Type:
-    curl -L https://raw.githubusercontent.com/hodduc/dotfiles/master/install.sh | bash
+    `curl -L https://raw.githubusercontent.com/hodduc/dotfiles/master/install.sh | bash`
 
   Recommendation:
+```sh
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 
     asdf plugin add rust
@@ -19,3 +22,4 @@ Hodduc's dotfiles
 
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
+```
