@@ -1,5 +1,11 @@
 local wezterm = require 'wezterm';
 
+-- The filled in variant of the < symbol
+local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+
+-- The filled in variant of the > symbol
+local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
+
 return {
   use_ime = true,
   send_composed_key_when_alt_is_pressed = false,
@@ -38,6 +44,12 @@ return {
     { key="DownArrow", mods="OPT|SUPER",
       action=wezterm.action{ActivatePaneDirection="Down"}},
   },
-}
 
--- vim: set ts=2 et
+  use_fancy_tab_bar = true,
+  window_padding = {
+    left = 8,
+    right = 8,
+    top = 0,
+    bottom = 0,
+  }
+}
