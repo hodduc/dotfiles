@@ -2,15 +2,12 @@
 [ -f ~/.asdf/bin/asdf ] && source ~/.asdf/asdf.sh
 [ -f ~/.zshrc_preload ] && source ~/.zshrc_preload
 
-# Load zsh plugins using antibody
-[ -f ~/.zsh_plugins.sh ] && source ~/.zsh_plugins.sh
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -146,8 +143,14 @@ command -v hub &> /dev/null && eval "$(hub alias -s)"
 # Override local zshrc
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
 
+# Autocompletion
+# To load a completion to zsh, put the zsh_completion file to ~/.zsh/completions/
+
+fpath=($HOME/.zsh/completions $fpath)
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/vault vault
+autoload -Uz compinit && compinit
+
+complete -o nospace -C vault vault
 
 export GPG_TTY=$(tty)
 export PIPENV_VENV_IN_PROJECT=1
