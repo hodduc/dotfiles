@@ -38,7 +38,7 @@ echo 'Done.'
 # Install gitconfig & gitignore
 rm -f $HOME/.gitconfig $HOME/.gitignore
 ln -s $WORK_DIR/dotfiles/gitconfig $HOME/.gitconfig
-ln -s $WORK_DIR/dotfiles/gitignore $HOME/.gitignore
+ln -s $WORK_DIR/dotfiles/gitignore $HOME/.gitignore_global
 
 # Install oh-my-zsh
 echo -n 'Install oh-my-zsh ...'
