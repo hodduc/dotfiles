@@ -1,3 +1,4 @@
 --glob=!vendor/**
 --glob=!.git
+--glob=!.terraform
 --hidden
