@@ -32,7 +32,8 @@ Plug 'alvan/vim-closetag'
 Plug 'posva/vim-vue'
 Plug 'hashivim/vim-terraform'
 Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+"Plug 'maxmellon/vim-jsx-pretty'
 Plug 'PProvost/vim-ps1'
 
 "" Generic Syntactic Helpers
@@ -71,7 +72,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_structs = 1
 let g:go_def_mapping_enabled = 0  " replaced with coc.nvim
-let g:go_info_mode='gopls'
+"let g:go_info_mode='gopls'
 " let g:go_auto_type_info = 1
 
 "" python-mode
@@ -80,7 +81,7 @@ let g:pymode_rope = 0
 "let g:pymode_rope_goto_definition_bind = '<leader>g'
 "let g:pymode_rope_goto_definition_cmd = 'e'
 "let g:pymode_rope_complete_on_dot = 0
-let g:pymode_lint = 1
+let g:pymode_lint = 0
 let g:pymode_python = 'python3'
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_lint_ignore = ["E501","E261","E266","C0111","W0401","W0614","R0201","W0511","C0302","R0911","C0302","R0914","W0212"]
@@ -109,9 +110,9 @@ let g:jsx_ext_required = 0
 
 "" ale
 " disable python linter to avoid conflict with python-mode
+"\   'go': ['gopls'],
 let g:ale_linters = {
-\   'python': [],
-\   'go': ['gometalinter', 'go vet', 'gopls'],
+\   'python': ['pyflakes', 'pep8'],
 \   'javascript': ['eslint'],
 \   'c': ['clang'],
 \   'cpp': ['clang', 'g++'],
