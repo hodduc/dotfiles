@@ -35,9 +35,10 @@ nvim +PlugInstall +qall
 
 echo 'Done.'
 
-# Install gitconfig
-rm -f $HOME/.gitconfig
+# Install gitconfig & gitignore
+rm -f $HOME/.gitconfig $HOME/.gitignore
 ln -s $WORK_DIR/dotfiles/gitconfig $HOME/.gitconfig
+ln -s $WORK_DIR/dotfiles/gitignore $HOME/.gitignore
 
 # Install oh-my-zsh
 echo -n 'Install oh-my-zsh ...'
@@ -48,4 +49,8 @@ rm -f $HOME/.zshrc
 git clone https://github.com/robbyrussell/oh-my-zsh $HOME/.oh-my-zsh
 ln -s $WORK_DIR/dotfiles/zshrc $HOME/.zshrc
 chsh -s /bin/zsh
+
+# Install misc
+rm -f $HOME/.ripgreprc
+ln -s $WORK_DIR/dotfiles/ripgreprc $HOME/.ripgreprc
 echo 'Done. Restart your shell.'

@@ -1,0 +1,26 @@
+# OS generated files #
+######################
+*~
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+# IntelliJ Stuff #
+##################
+*.iml
+.idea
+# ETC
+.ruby-version
+.venv
+.vscode
+.ropeproject
+.envrc
+.env
+
+.tool-versions
+.terraform
+
+__pycache__
