@@ -3,7 +3,7 @@ dotfiles
 
 Hodduc's dotfiles
 
-  Prerequisite: NeoVim, git
+  Prerequisite: curl, NeoVim, git
   
   Type:
     `curl -L https://raw.githubusercontent.com/hodduc/dotfiles/master/install.sh | bash`
