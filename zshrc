@@ -162,3 +162,30 @@ if [[ "$OSTYPE" == darwin* ]]; then
 	bindkey "^[^[[D" backward-word # option + <-
 	bindkey "^[^[[C" forward-word  # option + ->
 fi
+
+RPROMPT=$RPROMPT$'%{$fg[white]%}$(tf_prompt_info)%{$reset_color%} '
+
+# Load zinit if installed
+if [[ -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+	source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+	autoload -Uz _zinit
+	(( ${+_comps} )) && _comps[zinit]=_zinit
+
+	# Load a few important annexes, without Turbo
+	# (this is currently required for annexes)
+	zinit light-mode for \
+			zdharma-continuum/zinit-annex-as-monitor \
+			zdharma-continuum/zinit-annex-bin-gem-node \
+			zdharma-continuum/zinit-annex-patch-dl \
+			zdharma-continuum/zinit-annex-rust
+
+	zinit light jonmosco/kube-ps1
+	RPROMPT='$(kube_ps1)'$RPROMPT
+
+	zinit light zdharma/fast-syntax-highlighting
+	zinit light zsh-users/zsh-autosuggestions
+	zinit light zsh-users/zsh-completions
+
+	zinit ice bpick'kubectx;kubens' from'gh-r' sbin'kubectx;kubens' nocompletion
+	zinit load ahmetb/kubectx
+fi

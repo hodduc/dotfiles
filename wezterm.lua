@@ -8,7 +8,8 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
 return {
   use_ime = true,
-  send_composed_key_when_alt_is_pressed = false,
+  send_composed_key_when_left_alt_is_pressed = false,
+  send_composed_key_when_right_alt_is_pressed = false,
   font = wezterm.font_with_fallback({
     "Noto Sans Mono",
     "JetBrains Mono",
@@ -17,6 +18,11 @@ return {
   }, {stretch="Normal"}),
   font_size = 12.5,
   line_height = 1.0,
+  dpi_by_screen = {
+    -- Some external monitor requires custom DPI setting.
+    -- https://github.com/wez/wezterm/issues/4096
+    ['LG HDR WFHD'] = 81.75,
+  },
   keys = {
     -- Override SUPER+w with CloseCurrentPane (instead of CloseCurrentTab)
     { key="w", mods="SUPER",
@@ -43,6 +49,9 @@ return {
       action=wezterm.action{ActivatePaneDirection="Up"}},
     { key="DownArrow", mods="OPT|SUPER",
       action=wezterm.action{ActivatePaneDirection="Down"}},
+
+    -- Debug Overlay
+    { key="l", mods="SHIFT|CTRL", action="ShowDebugOverlay"},
   },
 
   use_fancy_tab_bar = true,

@@ -63,6 +63,7 @@ runtime! plugin/sensible.vim
 
 "" vim-airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'short_path'
 let g:airline_powerline_fonts = 1
 " let g:airline_theme = 'powerlineish'
 
@@ -83,12 +84,13 @@ let g:pymode_rope = 0
 "let g:pymode_rope_complete_on_dot = 0
 let g:pymode_lint = 0
 let g:pymode_python = 'python3'
-let g:pymode_lint_checkers = ['pyflakes', 'pep8']
-let g:pymode_lint_ignore = ["E501","E261","E266","C0111","W0401","W0614","R0201","W0511","C0302","R0911","C0302","R0914","W0212"]
-let g:pymode_options_max_line_length = 129
+"let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+"let g:pymode_lint_ignore = ["E501","E261","E266","C0111","W0401","W0614","R0201","W0511","C0302","R0911","C0302","R0914","W0212"]
+let g:pymode_options_max_line_length = 120
 let g:pymode_lint_unmodified = 1
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_lint_options_pylint = {'max-line-length': g:pymode_options_max_line_length}
+let g:pymode_debug = 1
 
 "" vim-terraform
 let g:terraform_fmt_on_save = 1
@@ -112,10 +114,13 @@ let g:jsx_ext_required = 0
 " disable python linter to avoid conflict with python-mode
 "\   'go': ['gopls'],
 let g:ale_linters = {
-\   'python': ['pyflakes', 'pep8'],
+\   'python': ['pep8', 'flake8', 'black'],
+\   'go': ['gometalinter', 'go vet', 'gopls'],
 \   'javascript': ['eslint'],
 \   'c': ['clang'],
 \   'cpp': ['clang', 'g++'],
+\   'rust': ['cargo', 'rls'],
+\   'terraform': [],
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
@@ -126,6 +131,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
+let g:ale_set_quickfix = 1
 let g:ale_list_window_size = 6
 let g:ale_echo_msg_format = '%code: %%s (%linter%)'
 let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --enable=gofmt --enable=goimports --exclude="not gofmted with -s"'  " --enable=errcheck 
@@ -133,7 +139,11 @@ let g:ale_go_gometalinter_options = '--no-config --disable-all --aggregate --ena
 let g:ale_cpp_gcc_options = '-Wall -O2 --std=c++17'
 let g:ale_cpp_clang_options = '-Wall -O2 --std=c++17'
 let g:ale_cpp_cc_options = '-Wall -O2 --std=c++17'
+let g:ale_python_flake8_options = '--max-line-length=120'
+let g:ale_rust_rls_toolchain = 'stable'
 
+" show ale status on vim-airline statusline
+let g:airline#extensions#ale#enabled = 1
 
 " If popup menu is visible, select and insert next item
 " Otherwise, insert tab character
@@ -193,6 +203,7 @@ au FileType html,htmldjango setl ts=2 sts=2 sw=2 et
 au FileType go setl ts=4 sts=4 sw=4
 au FileType ruby setl ts=2 sts=2 sw=2 et
 au FileType terraform setl ts=2 sts=2 sw=2 et
+au FileType lua setl ts=2 sts=2 sw=2 et
 au BufNewFile,BufRead *.gbp setf json
 au BufNewFile,BufRead *.phps,*.php3s setf php
 
@@ -228,6 +239,7 @@ let mapleader = "\<Space>"
 " useful keymaps
 nnoremap <silent> <C-j> :bn<CR>
 nnoremap <silent> <C-k> :bN<CR>
+nnoremap <silent> <C-h> :bd<CR>
 nnoremap mv :set mouse=v<CR>
 nnoremap ma :set mouse=a<CR>
 "nnoremap <silent> <C-h> :e %<.h<CR>
@@ -244,6 +256,10 @@ nnoremap <silent> <C-l> :Rg<CR>
 autocmd FileType dirvish nnoremap <buffer> <C-p> :Files %<CR>
 autocmd FileType dirvish nnoremap <buffer> <C-l> :RgDirvish<CR>
 
+" keymaps for ALE lint (move between error)
+nnoremap ]a :ALENextWrap<CR>
+nnoremap [a :ALEPreviousWrap<CR>
+
 command! -bang -nargs=* RgDirvish
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
@@ -256,3 +272,4 @@ endif
 runtime coc_config.vim  " load coc config
 
 redrawstatus  " to fix a bug on coloring command line (nvim 0.4.3 maybe?)
+
