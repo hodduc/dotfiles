@@ -40,6 +40,7 @@ Plug 'PProvost/vim-ps1'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
+Plug 'github/copilot.vim'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
