@@ -60,5 +60,12 @@ return {
     right = 8,
     top = 0,
     bottom = 0,
+  },
+  mouse_bindings = {
+    {
+      event = { Up = { streak = 1, button = "Left" } },
+      mods = "NONE",
+      action = wezterm.action.Nop,
+    },
   }
 }
