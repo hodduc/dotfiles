@@ -189,3 +189,9 @@ if [[ -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
 	zinit ice bpick'kubectx;kubens' from'gh-r' sbin'kubectx;kubens' nocompletion
 	zinit load ahmetb/kubectx
 fi
+
+function ecrlogin {
+	region="$(aws configure get region)"
+	accountid="$(aws sts get-caller-identity --query "Account" --output text)"
+	aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $accountid.dkr.ecr.$region.amazonaws.com
+}
