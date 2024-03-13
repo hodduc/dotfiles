@@ -38,7 +38,7 @@ Plug 'PProvost/vim-ps1'
 
 "" Generic Syntactic Helpers
 " Plug 'Valloric/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 
 function! DoRemote(arg)
