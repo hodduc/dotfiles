@@ -18,6 +18,7 @@ WORK_DIR=$HOME/repos
 CONF_DIR=$HOME/.config/nvim
 mkdir -p $WORK_DIR
 mkdir -p $CONF_DIR
+mkdir -p $CONF_DIR/lua
 
 # Clone dotfiles repo from github and extract it
 git clone --recursive https://github.com/hodduc/dotfiles $WORK_DIR/dotfiles
@@ -28,7 +29,7 @@ echo -n 'Install neovim scripts...'
 curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s $WORK_DIR/dotfiles/nvim/init.vim $CONF_DIR/init.vim
-ln -s $WORK_DIR/dotfiles/nvim/coc_config.vim $CONF_DIR/coc_config.vim
+ln -s $WORK_DIR/dotfiles/nvim/lua/init.lua $CONF_DIR/lua/init.lua
 ln -s $CONF_DIR/init.vim $HOME/.nvimrc
 
 nvim +PlugInstall +qall

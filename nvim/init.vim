@@ -22,7 +22,7 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'fholgado/minibufexpl.vim'
 
 "" Language-specific packs
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'fatih/vim-go'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'cstrahan/vim-capnp'
@@ -35,12 +35,17 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 "Plug 'maxmellon/vim-jsx-pretty'
 Plug 'PProvost/vim-ps1'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 "" Generic Syntactic Helpers
-" Plug 'Valloric/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 Plug 'github/copilot.vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'L3MON4D3/LuaSnip'
+
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -73,7 +78,7 @@ let g:go_fmt_command = "goimports"
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_structs = 1
-let g:go_def_mapping_enabled = 0  " replaced with coc.nvim
+"let g:go_def_mapping_enabled = 0  " replaced with coc.nvim
 "let g:go_info_mode='gopls'
 " let g:go_auto_type_info = 1
 
@@ -96,15 +101,6 @@ let g:pymode_debug = 1
 "" vim-terraform
 let g:terraform_fmt_on_save = 1
 
-"" YouCompleteMe
-""" turn off YouCompleteMe identifier based completion
-" let g:ycm_min_num_of_chars_for_completion = 99
-" let g:ycm_key_invoke_completion = '<C-l>'
-
-"" Use deoplete.
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-
 "" vim-closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.jsx,*.js"
 
@@ -122,6 +118,7 @@ let g:ale_linters = {
 \   'cpp': ['clang', 'g++'],
 \   'rust': ['cargo', 'rls'],
 \   'terraform': [],
+\   'proto': ['buf-format', 'buf-lint'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
@@ -205,6 +202,7 @@ au FileType go setl ts=4 sts=4 sw=4
 au FileType ruby setl ts=2 sts=2 sw=2 et
 au FileType terraform setl ts=2 sts=2 sw=2 et
 au FileType lua setl ts=2 sts=2 sw=2 et
+au FileType proto setl ts=2 sts=2 sw=2 et
 au BufNewFile,BufRead *.gbp setf json
 au BufNewFile,BufRead *.phps,*.php3s setf php
 
@@ -270,7 +268,7 @@ if filereadable(glob("~/.nvimrc_local"))
   source ~/.nvimrc_local
 endif
 
-runtime coc_config.vim  " load coc config
-
 redrawstatus  " to fix a bug on coloring command line (nvim 0.4.3 maybe?)
 
+" Load init from lua
+lua require('init')
