@@ -16,6 +16,7 @@ return {
     "NanumBarunGothic",
     "AppleGothic",
   }, {stretch="Normal"}),
+  color_scheme = 'Twilight (dark) (terminal.sexy)',
   font_size = 12.5,
   line_height = 1.0,
   dpi_by_screen = {

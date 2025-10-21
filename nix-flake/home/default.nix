@@ -63,5 +63,7 @@
     ./programs/zsh.nix
     ./programs/wezterm.nix
     ./programs/neovim.nix
+    ./programs/eza.nix
+    ./programs/vscode.nix
   ];
 }

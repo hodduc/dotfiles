@@ -23,6 +23,8 @@
         mru-spaces = false;
         persistent-apps = [
           "${pkgs.wezterm}/Applications/WezTerm.app"
+          "${pkgs.vscode}/Applications/Visual Studio Code.app"
+          "${pkgs.slack}/Applications/Slack.app"
         ];
       };
 

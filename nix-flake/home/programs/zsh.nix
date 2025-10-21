@@ -35,6 +35,10 @@
       # Terraform
       tf = "terraform";
       kc = "kubectl";
+
+      # Modern CLI tools
+      cat = "bat --paging never --theme DarkNeon --style plain";
+      ack = "rg";
     };
     plugins = [
 #       {

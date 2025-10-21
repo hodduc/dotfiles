@@ -1,5 +1,7 @@
 .PHONY: update darwin home apply gc refresh-darwin refresh-home refresh
 
+.DEFAULT_GOAL := home
+
 # Update flake inputs to latest versions
 update:
 	nix flake update
