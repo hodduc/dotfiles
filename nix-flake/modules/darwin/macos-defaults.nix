@@ -13,7 +13,7 @@
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
 
-        "com.apple.swipescrolldirection" = false;
+        "com.apple.swipescrolldirection" = true;
       };
 
       dock = {
@@ -40,6 +40,10 @@
       menuExtraClock = {
         ShowDate = 1;
         ShowSeconds = true;
+      };
+
+      trackpad = {
+        TrackpadRightClick = true;
       };
 
       # NOT WORKING!

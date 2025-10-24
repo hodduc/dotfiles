@@ -61,9 +61,12 @@
     ./packages.nix
     ./programs/git.nix
     ./programs/zsh.nix
+    ./programs/starship.nix
     ./programs/wezterm.nix
     ./programs/neovim.nix
     ./programs/eza.nix
     ./programs/vscode.nix
+    ./programs/mise.nix
+    ./programs/direnv.nix
   ];
 }

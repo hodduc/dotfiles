@@ -14,16 +14,13 @@
         export KUBE_EDITOR=vim
         export K9S_EDITOR=vim
         export EDITOR=vim
-        source ~/.p10k.zsh
-        source ~/.hooks.zsh
-        source ~/.zshrc
+        export DIRENV_LOG_FORMAT=$'\033[2mdirenv: %s\033[0m'
+        #source ~/.hooks.zsh
+        #source ~/.zshrc
       '')
       ''
-        [[ ! -f $(dirname $(dirname $(readlink -f $(which asdf))))/asdf.sh ]] || source $(dirname $(dirname $(readlink -f $(which asdf))))/asdf.sh
-        [[ ! -f $(dirname $(dirname $(readlink -f $(which asdf))))/share/asdf-vm/asdf.sh ]] || source $(dirname $(dirname $(readlink -f $(which asdf))))/share/asdf-vm/asdf.sh
         export PATH=$PATH:~/.cargo/bin
         export AWS_PROFILE=saml
-        export VAULT_ADDR=https://vault.devsisters.cloud
 
         bindkey "\e[1;3D" backward-word     # ⌥←
         bindkey "\e[1;3C" forward-word      # ⌥→
@@ -39,6 +36,8 @@
       # Modern CLI tools
       cat = "bat --paging never --theme DarkNeon --style plain";
       ack = "rg";
+
+      docker = "nerdctl";
     };
     plugins = [
 #       {

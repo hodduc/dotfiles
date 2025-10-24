@@ -8,4 +8,4 @@ lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
-require('lspconfig').gopls.setup{}
+vim.lsp.enable('gopls')

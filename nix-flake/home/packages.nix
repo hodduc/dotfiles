@@ -1,23 +1,20 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Install packages from Nixpkgs. See https://search.nixos.org/packages
   home.packages = with pkgs; [
     # Development tools
     kubectl
     claude-code
     colima
 
-    # Terminal
-    wezterm
-
     # CLI utilities
     bat
-    eza
     ripgrep
+    gh
 
     # Applications
+    wezterm
     slack
-
-    # Add more packages here as needed
   ];
 }
