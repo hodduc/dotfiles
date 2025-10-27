@@ -3,6 +3,7 @@
 {
   imports = [
     ./macos-defaults.nix
+    ./keyboard.nix
   ];
 
   # Enable Touch ID for sudo
