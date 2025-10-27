@@ -12,6 +12,7 @@
     bat
     ripgrep
     gh
+    saml2aws
 
     # Applications
     wezterm
