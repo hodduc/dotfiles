@@ -12,7 +12,7 @@ darwin:
 
 # Build and apply Home Manager configuration (no sudo needed!)
 home:
-	home-manager switch --flake .#hodduc
+	home-manager switch --flake .#hodduc@macbook-joonsunglee
 
 # Apply both Darwin and Home Manager configurations
 apply: darwin home

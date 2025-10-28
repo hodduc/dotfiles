@@ -1,3 +1,6 @@
 [submodule "vim"]
 	path = vim
 	url = https://github.com/hodduc/vimfile/
+[submodule "nix-flake/private"]
+	path = nix-flake/private
+	url = git@github.com:hodduc/dotfiles-private.git

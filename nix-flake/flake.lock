@@ -74,12 +74,29 @@
         "type": "github"
       }
     },
+    "private": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761631327,
+        "narHash": "sha256-vFOl4oXu9+CmiIN1y+2+5P0kGiJRB5Emw4kbpfaC48A=",
+        "ref": "refs/heads/main",
+        "rev": "c5b375b3e94aa802ebb37614e13f4d9f12b706ce",
+        "revCount": 2,
+        "type": "git",
+        "url": "file:./private"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:./private"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "private": "private"
       }
     }
   },
