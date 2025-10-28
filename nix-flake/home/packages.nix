@@ -16,6 +16,5 @@
 
     # Applications
     wezterm
-    slack
   ];
 }
