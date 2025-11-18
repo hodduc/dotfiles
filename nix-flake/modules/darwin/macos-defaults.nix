@@ -71,11 +71,18 @@
     };
 
     system.keyboard = {
-      enableKeyMapping = true;
-      remapCapsLockToControl = true;
+      # Note: enableKeyMapping and remapCapsLockToControl conflict with hidutil mappings
+      # Using hidutil in keyboard.nix instead for all key remappings
+      # See: https://github.com/nix-darwin/nix-darwin/issues/905
+      # enableKeyMapping = true;
+      # remapCapsLockToControl = true;
       nonUS.remapTilde = false;
     };
 
     security.pam.services.sudo_local.touchIdAuth = true;
+
+    system.activationScripts.postActivation.text = ''
+      sudo -u hodduc /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
   };
 }

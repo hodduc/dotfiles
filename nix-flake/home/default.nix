@@ -56,6 +56,11 @@
   # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
+  # macOS-specific keybindings
+  targets.darwin.keybindings = {
+    "₩" = ["insertText:" "`"];
+  };
+
   # Import all home modules
   imports = [
     ./packages.nix

@@ -24,3 +24,4 @@ Thumbs.db
 .terraform
 
 __pycache__
+mise.toml

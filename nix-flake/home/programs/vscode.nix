@@ -49,8 +49,13 @@
       "files.exclude" = {
           "**/generated" = true;
       };
-      "workbench.activityBar.orientation" = "vertical";
       "files.trimTrailingWhitespace" = true;
+      "git.blame.statusBarItem.enabled" = true;
+      "git.blame.editorDecoration.enabled" = true;
+      "editor.formatOnSave" = false;
+      "[java]" = {
+        "editor.defaultFormatter" = "redhat.java";
+      };
     };
   };
 }

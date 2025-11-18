@@ -12,6 +12,7 @@ darwin:
 
 # Build and apply Home Manager configuration (no sudo needed!)
 home:
+	nix flake update private --allow-dirty-locks
 	home-manager switch --flake .#hodduc@macbook-joonsunglee
 
 # Apply both Darwin and Home Manager configurations

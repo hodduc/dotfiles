@@ -5,13 +5,17 @@
   home.packages = with pkgs; [
     # Development tools
     kubectl
+    kubectx
+    kubernetes-helm
     claude-code
     colima
+    python3
 
     # CLI utilities
     bat
     ripgrep
     gh
+    awscli2
     saml2aws
 
     # Applications

@@ -18,6 +18,9 @@
         "$git_state"
         "$git_status"
         "$cmd_duration"
+        "$fill"
+        "$kubernetes"
+        "$aws"
         "$line_break"
         "$python"
         "$character"
@@ -25,8 +28,8 @@
 
       directory = {
         style = "blue bold";
-        truncation_length = 3;
-        truncate_to_repo = true;
+        truncation_length = 0;
+        truncate_to_repo = false;
       };
 
       character = {
@@ -53,6 +56,31 @@
       python = {
         symbol = " ";
         format = "[$symbol$virtualenv]($style) ";
+      };
+
+      kubernetes = {
+        disabled = false;
+        format = "[\\(](cyan bold)[$context](blue bold)[:](cyan bold)[$namespace](cyan bold)[\\)](cyan bold) ";
+        detect_files = [];
+        detect_extensions = [];
+        detect_folders = [];
+      };
+
+      aws = {
+        disabled = false;
+        format = "[$symbol($profile )(\\($region\\) )]($style)";
+        symbol = "☁️  ";
+        expiration_symbol = "💥 ";
+        style = "bold yellow";
+        region_aliases = {
+          "us-east-1" = "use1";
+          "us-west-2" = "usw2";
+          "ap-northeast-2" = "apne2";
+        };
+      };
+
+      fill = {
+        symbol = " ";
       };
     };
   };
