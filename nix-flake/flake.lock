@@ -77,11 +77,11 @@
     "private": {
       "flake": false,
       "locked": {
-        "lastModified": 1763368201,
-        "narHash": "sha256-bovOldO/y9YiWiO/yaiKKiXMWZWXBzAHzObSxn3SDjM=",
+        "lastModified": 1766732131,
+        "narHash": "sha256-78Y6rdgFpT59gJibvHrHwSK2oKfswpgz7DOf3sq7Fow=",
         "ref": "refs/heads/main",
-        "rev": "ae9b6c7612baa7bcf70618be1a9e1c4582c9b4e0",
-        "revCount": 3,
+        "rev": "e884141bb014adb790f4291e8785fbb0dfd03da5",
+        "revCount": 4,
         "type": "git",
         "url": "file:./private"
       },

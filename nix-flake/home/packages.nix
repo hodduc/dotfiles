@@ -27,8 +27,10 @@ in
   home.packages = with pkgs; [
     # Development tools
     kubectl
+    kubectl-node-shell
     kubectx
     kubernetes-helm
+    k9s
     claude-code
     colima
     python3

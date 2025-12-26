@@ -57,5 +57,8 @@
         "editor.defaultFormatter" = "redhat.java";
       };
     };
+
+    profiles.default.enableUpdateCheck = false;
+    profiles.default.enableExtensionUpdateCheck = false;
   };
 }
