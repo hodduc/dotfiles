@@ -2,14 +2,14 @@
   inputs = {
     # self.submodules = true;  # Alternative: auto-fetch all submodules
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     private.url = "git+file:./private";
     private.flake = false;
@@ -34,7 +34,7 @@
     # Build using: home-manager switch --flake .#hodduc@macbook-joonsunglee
     homeConfigurations = {
       "${username}@macbook-joonsunglee" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs-unstable {
+        pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config.allowUnfree = true;
         };

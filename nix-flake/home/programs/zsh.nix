@@ -8,7 +8,7 @@
   
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     initContent = lib.mkMerge [
       (lib.mkBefore ''
         export KUBE_EDITOR=vim
@@ -54,6 +54,7 @@
 #       }
     ];
     autosuggestion.enable = true;
+    history.path = "${config.home.homeDirectory}/.zsh_history";
   };
   
   # home.file.".p10k.zsh".text = (builtins.readFile ./p10k.zsh);

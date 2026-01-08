@@ -1,6 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
+  # Unstable packages for latest versions
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+
   # aykamko/tag from TheLonelyGhost/tag fork
   tag = pkgs.buildGoModule {
     pname = "tag";
@@ -31,7 +37,7 @@ in
     kubectx
     kubernetes-helm
     k9s
-    claude-code
+    pkgs-unstable.claude-code  # Use unstable for latest version
     colima
     python3
 

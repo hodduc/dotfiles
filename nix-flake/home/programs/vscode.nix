@@ -1,8 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
+let
+  # Use unstable VSCode for latest version
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
 {
   programs.vscode = {
     enable = true;
+    package = pkgs-unstable.vscode;
 
     profiles.default.keybindings = [
       {
