@@ -4,6 +4,7 @@
   imports = [
     ../../modules/darwin/system.nix
     ../../modules/common/nix.nix
+    "${inputs.private}/nix/github-tokens.nix"
   ];
 
   # System-specific configuration for this host

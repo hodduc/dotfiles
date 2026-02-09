@@ -24,6 +24,7 @@
         persistent-apps = [
           "${pkgs.wezterm}/Applications/WezTerm.app"
           "${pkgs.vscode}/Applications/Visual Studio Code.app"
+          "${pkgs.ghostty-bin}/Applications/Ghostty.app"
         ];
       };
 

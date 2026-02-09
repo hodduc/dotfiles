@@ -38,7 +38,9 @@ in
     kubernetes-helm
     k9s
     pkgs-unstable.claude-code  # Use unstable for latest version
+    pkgs-unstable.codex
     colima
+    corepack
     python3
 
     # CLI utilities
@@ -51,5 +53,6 @@ in
 
     # Applications
     wezterm
+    ghostty-bin
   ];
 }
