@@ -36,4 +36,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Allow specific insecure packages that are still required
+  nixpkgs.config.permittedInsecurePackages = [
+    "lima-full-1.2.2"
+  ];
 }

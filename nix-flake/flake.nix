@@ -36,7 +36,13 @@
       "${username}@macbook-joonsunglee" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [
+              "lima-full-1.2.2"
+              "lima-additional-guestagents-1.2.2"
+            ];
+          };
         };
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./hosts/macbook-joonsunglee/home.nix ];

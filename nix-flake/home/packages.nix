@@ -7,6 +7,31 @@ let
     config.allowUnfree = true;
   };
 
+  # codex version override
+  # Using importCargoLock instead of fetchCargoVendor due to -Z bindeps parse failure in rules_rust git dep.
+  # TODO: Switch back to fetchCargoVendor after https://github.com/NixOS/nixpkgs/pull/486323
+  codex = pkgs-unstable.codex.overrideAttrs (old: rec {
+    version = "0.112.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "openai";
+      repo = "codex";
+      tag = "rust-v${version}";
+      hash = "sha256-tOrqGXh4k5GzcPhCUaiYoUVt4liYfgRd2ejkrdQpqWs=";
+    };
+    sourceRoot = "${src.name}/codex-rs";
+    cargoDeps = pkgs-unstable.rustPlatform.importCargoLock {
+      lockFile = src + "/codex-rs/Cargo.lock";
+      outputHashes = {
+        "crossterm-0.28.1" = "sha256-6qCtfSMuXACKFb9ATID39XyFDIEMFDmbx6SSmNe+728=";
+        "nucleo-0.5.0" = "sha256-Hm4SxtTSBrcWpXrtSqeO0TACbUxq3gizg1zD/6Yw/sI=";
+        "ratatui-0.29.0" = "sha256-HBvT5c8GsiCxMffNjJGLmHnvG77A6cqEL+1ARurBXho=";
+        "runfiles-0.1.0" = "sha256-uJpVLcQh8wWZA3GPv9D8Nt43EOirajfDJ7eq/FB+tek=";
+        "tokio-tungstenite-0.28.0" = "sha256-hJAkvWxDjB9A9GqansahWhTmj/ekcelslLUTtwqI7lw=";
+        "tungstenite-0.27.0" = "sha256-AN5wql2X2yJnQ7lnDxpljNw0Jua40GtmT+w3wjER010=";
+      };
+    };
+  });
+
   # aykamko/tag from TheLonelyGhost/tag fork
   tag = pkgs.buildGoModule {
     pname = "tag";
@@ -38,7 +63,7 @@ in
     kubernetes-helm
     k9s
     pkgs-unstable.claude-code  # Use unstable for latest version
-    pkgs-unstable.codex
+    codex
     colima
     corepack
     python3
