@@ -67,6 +67,7 @@ in
     colima
     corepack
     python3
+    uv
 
     # CLI utilities
     bat
