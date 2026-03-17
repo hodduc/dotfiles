@@ -79,7 +79,6 @@
       "locked": {
         "lastModified": 1770615358,
         "narHash": "sha256-SKu1eCwFjyFpiZvrMa07mP+hOQrgsCyF1zFAhDrq98s=",
-        "ref": "refs/heads/main",
         "rev": "203b2c81cc388a48626d31fe5f35ddcf6b3249bc",
         "revCount": 6,
         "type": "git",
