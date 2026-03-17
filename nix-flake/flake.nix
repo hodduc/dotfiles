@@ -28,6 +28,11 @@
         specialArgs = { inherit inputs; };
         modules = [ ./hosts/macbook-joonsunglee ];
       };
+      "macstudio-joonsunglee" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/macstudio-joonsunglee ];
+      };
     };
 
     # Standalone Home Manager configuration
@@ -46,6 +51,20 @@
         };
         extraSpecialArgs = { inherit inputs; };
         modules = [ ./hosts/macbook-joonsunglee/home.nix ];
+      };
+      "${username}@macstudio-joonsunglee" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [
+              "lima-full-1.2.2"
+              "lima-additional-guestagents-1.2.2"
+            ];
+          };
+        };
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./hosts/macstudio-joonsunglee/home.nix ];
       };
     };
   };
