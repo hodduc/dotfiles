@@ -66,6 +66,7 @@ in
     colima
     docker-wrapper
     corepack
+    nodejs
     python3
     uv
 
