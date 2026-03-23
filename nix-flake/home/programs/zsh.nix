@@ -22,6 +22,7 @@
         export PATH=$PATH:~/.cargo/bin
         export AWS_PROFILE=saml
 
+        bindkey -e
         bindkey "\e[1;3D" backward-word     # ⌥←
         bindkey "\e[1;3C" forward-word      # ⌥→
 
