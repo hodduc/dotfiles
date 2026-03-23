@@ -26,6 +26,12 @@ let
     '';
   };
 
+  # docker -> nerdctl wrapper (aliases don't work in scripts/Makefiles)
+  docker-wrapper = pkgs.writeShellScriptBin "docker" ''
+    exec nerdctl "$@"
+  '';
+
+  # aykamko/tag from TheLonelyGhost/tag fork
   tag = pkgs.buildGoModule {
     pname = "tag";
     version = "1.4.0";
@@ -58,6 +64,7 @@ in
     pkgs-unstable.claude-code  # Use unstable for latest version
     codex
     colima
+    docker-wrapper
     corepack
     python3
     uv

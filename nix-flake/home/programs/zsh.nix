@@ -43,8 +43,6 @@
       # Modern CLI tools
       cat = "bat --paging never --theme DarkNeon --style plain";
       ack = "rg";
-
-      docker = "nerdctl";
     };
     plugins = [
 #       {
