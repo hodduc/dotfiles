@@ -44,6 +44,16 @@
       # Modern CLI tools
       cat = "bat --paging never --theme DarkNeon --style plain";
       ack = "rg";
+
+      # Claude Code with separate config dirs
+      claude = "echo 'Use claude-work or claude-personal instead.' && return 1";
+      claude-work = "CLAUDE_CONFIG_DIR=~/.claude-work command claude";
+      claude-personal = "CLAUDE_CONFIG_DIR=~/.claude-personal command claude";
+
+      # Codex with separate config dirs
+      codex = "echo 'Use codex-work or codex-personal instead.' && return 1";
+      codex-work = "CODEX_HOME=~/.codex-work command codex";
+      codex-personal = "CODEX_HOME=~/.codex-personal command codex";
     };
     plugins = [
 #       {
