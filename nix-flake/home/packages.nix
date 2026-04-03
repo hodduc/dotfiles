@@ -69,6 +69,7 @@ in
     nodejs
     python3
     uv
+    jujutsu
 
     # CLI utilities
     bat
@@ -77,6 +78,7 @@ in
     awscli2
     saml2aws
     tag
+    step-cli
 
     # Applications
     wezterm
