@@ -10,10 +10,10 @@ let
   # codex pre-built binary (building from source takes too long)
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.112.0";
+    version = "0.118.0";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      hash = "sha256-Ge7j7cdEJJJjeERjSs2/RAEtmEzsMDmoRFlKpKrQRzg=";
+      hash = "sha256-utPCyDuHS3Z86Gr2T08AW8FN6nny2MrDfPput3cQxxc=";
     };
     sourceRoot = ".";
     unpackPhase = ''
@@ -63,7 +63,7 @@ in
     k9s
     pkgs-unstable.claude-code  # Use unstable for latest version
     codex
-    colima
+    pkgs-unstable.colima
     docker-wrapper
     corepack
     nodejs

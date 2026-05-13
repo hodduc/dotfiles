@@ -44,8 +44,6 @@
           config = {
             allowUnfree = true;
             permittedInsecurePackages = [
-              "lima-full-1.2.2"
-              "lima-additional-guestagents-1.2.2"
             ];
           };
         };
@@ -58,8 +56,6 @@
           config = {
             allowUnfree = true;
             permittedInsecurePackages = [
-              "lima-full-1.2.2"
-              "lima-additional-guestagents-1.2.2"
             ];
           };
         };
