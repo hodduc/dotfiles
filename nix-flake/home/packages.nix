@@ -10,10 +10,10 @@ let
   # codex pre-built binary (building from source takes too long)
   codex = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.118.0";
+    version = "0.130.0";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      hash = "sha256-utPCyDuHS3Z86Gr2T08AW8FN6nny2MrDfPput3cQxxc=";
+      hash = "sha256-vFCkt/mgyMqZF5GJ5GWbYBEHgwdw4hVH3Awka85zNXc=";
     };
     sourceRoot = ".";
     unpackPhase = ''
