@@ -73,5 +73,6 @@
     ./programs/vscode.nix
     ./programs/mise.nix
     ./programs/direnv.nix
+    ./programs/lima.nix
   ];
 }

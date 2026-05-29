@@ -26,9 +26,9 @@ let
     '';
   };
 
-  # docker -> nerdctl wrapper (aliases don't work in scripts/Makefiles)
+  # docker -> lima nerdctl wrapper (aliases don't work in scripts/Makefiles)
   docker-wrapper = pkgs.writeShellScriptBin "docker" ''
-    exec nerdctl "$@"
+    exec ${pkgs-unstable.lima}/bin/limactl shell "''${LIMA_INSTANCE:-default}" nerdctl "$@"
   '';
 
   # aykamko/tag from TheLonelyGhost/tag fork
