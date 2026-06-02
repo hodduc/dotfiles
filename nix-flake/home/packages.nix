@@ -8,23 +8,24 @@ let
   };
 
   # codex pre-built binary (building from source takes too long)
-  codex = pkgs.stdenv.mkDerivation rec {
-    pname = "codex";
-    version = "0.130.0";
-    src = pkgs.fetchurl {
-      url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      hash = "sha256-vFCkt/mgyMqZF5GJ5GWbYBEHgwdw4hVH3Awka85zNXc=";
-    };
-    sourceRoot = ".";
-    unpackPhase = ''
-      tar xzf $src
-    '';
-    installPhase = ''
-      mkdir -p $out/bin
-      cp codex-aarch64-apple-darwin $out/bin/codex
-      chmod +x $out/bin/codex
-    '';
-  };
+  # NOTE: temporarily disabled — using mise instead (see ~/.config/mise/config.toml)
+  # codex = pkgs.stdenv.mkDerivation rec {
+  #   pname = "codex";
+  #   version = "0.130.0";
+  #   src = pkgs.fetchurl {
+  #     url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
+  #     hash = "sha256-vFCkt/mgyMqZF5GJ5GWbYBEHgwdw4hVH3Awka85zNXc=";
+  #   };
+  #   sourceRoot = ".";
+  #   unpackPhase = ''
+  #     tar xzf $src
+  #   '';
+  #   installPhase = ''
+  #     mkdir -p $out/bin
+  #     cp codex-aarch64-apple-darwin $out/bin/codex
+  #     chmod +x $out/bin/codex
+  #   '';
+  # };
 
   # docker -> lima nerdctl wrapper (aliases don't work in scripts/Makefiles)
   docker-wrapper = pkgs.writeShellScriptBin "docker" ''
@@ -61,8 +62,9 @@ in
     kubectx
     kubernetes-helm
     k9s
-    pkgs-unstable.claude-code  # Use unstable for latest version
-    codex
+    # NOTE: temporarily disabled — using mise instead (see ~/.config/mise/config.toml)
+    # pkgs-unstable.claude-code  # Use unstable for latest version
+    # codex
     pkgs-unstable.colima
     docker-wrapper
     corepack
