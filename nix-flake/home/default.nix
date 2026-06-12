@@ -74,5 +74,6 @@
     ./programs/mise.nix
     ./programs/direnv.nix
     ./programs/lima.nix
+    ./programs/ai-agents.nix
   ];
 }
