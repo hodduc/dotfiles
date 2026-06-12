@@ -46,12 +46,12 @@ Plug 'Vimjas/vim-python-pep8-indent'
 "" Generic Syntactic Helpers
 Plug 'w0rp/ale'
 Plug 'github/copilot.vim'
-Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'L3MON4D3/LuaSnip'
 
-Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
+"" LSP
+Plug 'neovim/nvim-lspconfig'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -84,7 +84,8 @@ let g:go_fmt_command = "goimports"
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_structs = 1
-let g:go_def_mapping_enabled = 0  " replaced with lsp-zero-config
+let g:go_def_mapping_enabled = 0  " replaced with lsp
+let g:go_gopls_enabled = 0
 "let g:go_info_mode='gopls'
 " let g:go_auto_type_info = 1
 
@@ -115,10 +116,10 @@ let g:jsx_ext_required = 0
 
 "" ale
 " disable python linter to avoid conflict with python-mode
-"\   'go': ['gopls'],
+let g:ale_disable_lsp = 1
 let g:ale_linters = {
 \   'python': ['pep8', 'flake8', 'black'],
-\   'go': ['gometalinter', 'go vet', 'gopls'],
+\   'go': ['gometalinter', 'go vet'],
 \   'javascript': ['eslint'],
 \   'c': ['clang'],
 \   'cpp': ['clang', 'g++'],
