@@ -10,7 +10,6 @@
 	quotepath = false
 	commentchar = ";"
 	excludesfile = /Users/hodduc/.gitignore_global
-	pager = less -X -F
 
 [diff]
 	compactionHeuristic = true
