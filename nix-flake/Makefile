@@ -1,4 +1,4 @@
-.PHONY: update darwin home apply gc refresh-darwin refresh-home refresh setup
+.PHONY: update darwin home preview apply gc refresh-darwin refresh-home refresh setup
 
 .DEFAULT_GOAL := home
 
@@ -37,6 +37,12 @@ darwin:
 home:
 	nix flake update private --allow-dirty-locks
 	home-manager switch --flake .#$(USERNAME)@$(HOST)
+
+# Preview what 'make home' would build (cache miss = slow) vs fetch — no changes applied.
+# Uses the current lock (does not touch private input).
+preview:
+	nix build --dry-run --print-build-logs \
+	  '.#homeConfigurations."$(USERNAME)@$(HOST)".activationPackage'
 
 # Apply both Darwin and Home Manager configurations
 apply: darwin home
