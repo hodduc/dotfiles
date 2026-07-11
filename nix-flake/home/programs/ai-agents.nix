@@ -18,6 +18,12 @@ let
       and ask first — do not `cat`/`grep`/`ls`/`find` it. "I need this context to
       diagnose the problem" is NOT an exception; gather it by asking, or have the
       user run it via `! <command>`. Needing the info never overrides this rule.
+      - **Exception — agent runtime directories.** Reading and writing the
+        directories the agent itself needs to operate is always allowed:
+        `$CLAUDE_CONFIG_DIR`, `$CODEX_HOME`, `~/.claude*`, `~/.codex*`, and any
+        session/scratchpad/temp directory the harness assigns. Skills, memory,
+        and agent configuration live there; accessing them is normal operation,
+        not a violation of this rule.
     - **Do not add global packages without permission** (pip, npm, cargo, etc.).
       This system is managed through Nix, so do not install things arbitrarily —
       keep the system as stateless as possible. If you need to run a Python
