@@ -67,7 +67,6 @@ in
     # codex
     pkgs-unstable.colima
     docker-wrapper
-    corepack
     nodejs
     python3
     uv

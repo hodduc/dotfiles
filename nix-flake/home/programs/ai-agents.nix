@@ -12,7 +12,12 @@ let
 
     - **Do not read outside the working directory without permission.** This
       includes circumventing the restriction through bash scripts or any other
-      workaround.
+      workaround. Before EVERY command/tool that touches a path, check: is the
+      target inside the working directory? If a path starts with `~`, `$HOME`,
+      `/Users/hodduc/.config`, `/etc`, or any absolute path outside the repo, STOP
+      and ask first — do not `cat`/`grep`/`ls`/`find` it. "I need this context to
+      diagnose the problem" is NOT an exception; gather it by asking, or have the
+      user run it via `! <command>`. Needing the info never overrides this rule.
     - **Do not add global packages without permission** (pip, npm, cargo, etc.).
       This system is managed through Nix, so do not install things arbitrarily —
       keep the system as stateless as possible. If you need to run a Python
