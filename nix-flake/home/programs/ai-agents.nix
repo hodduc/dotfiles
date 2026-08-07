@@ -31,6 +31,14 @@ let
       instead.
     - **Keep comments simple and essential.** Do not leave trivial comments or
       comments that merely restate what the code already makes obvious.
+    - **Do not `git push` or create PRs unless explicitly asked.** Local
+      commits are fine when appropriate; anything that leaves this machine
+      (push, PR, publishing) waits for an explicit request.
+    - **(Claude Code only) Do not spawn subagents on the top-tier model
+      (fable) unless explicitly asked.** Subagents inherit the parent model
+      by default, so pass an explicit model override — use `opus` or
+      `sonnet`, never `haiku`. If a task genuinely seems to need fable, ask
+      the user first.
   '';
 
   # config-dir-relative path -> guidance content, per agent.
