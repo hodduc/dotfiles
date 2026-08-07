@@ -5,6 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    # https://hydra.nixos.org/build/339923753 에서 darwin-arm64 빌드가 깨져 캐시를 타지 않고 있어서
+    # 임시로 fallback 한다
+    nixpkgs-mise.url = "github:NixOS/nixpkgs/b7a3820e9ee222085c654bb4a0aee7ecccdd26ea";
+
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 

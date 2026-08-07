@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable {
+  pkgs-mise = import inputs.nixpkgs-mise {
     system = pkgs.system;
     config.allowUnfree = true;
   };
@@ -10,7 +10,7 @@ in
   programs.mise = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs-unstable.mise;
+    package = pkgs-mise.mise;
   };
 
   # conf.d fragment (not config.toml) so mise can still write config.toml itself.
