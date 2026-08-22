@@ -8,6 +8,22 @@ let
     Global guidance for AI coding agents on this machine. Repository-specific
     instructions (a repo's `CLAUDE.md` / `AGENTS.md`) take precedence over this.
 
+    ## Planning and Design
+
+    - For feature or design work, investigate safely discoverable facts before
+      asking questions: relevant code, docs, tests, history, configuration, and
+      read-only deployment or endpoint state when useful. Summarize concrete
+      findings first.
+    - Ask only non-discoverable decisions that materially change scope, rollout,
+      disclosure, UX, ownership, or architecture. Order questions by downstream
+      impact. When genuine alternatives exist, offer 2–3 mutually exclusive,
+      substantive options with a recommendation; otherwise state the
+      evidence-backed assumption and proceed.
+    - Do not manufacture choices for approval checkpoints. Options such as
+      “Approve,” “Revise,” “Reconsider,” or “Other” are not meaningful
+      alternatives and must not be presented through a multiple-choice request
+      tool.
+
     ## Operating Constraints
 
     - **Do not read outside the working directory without permission.** This
@@ -41,12 +57,19 @@ let
       the user first.
   '';
 
-  # config-dir-relative path -> guidance content, per agent.
+  codexProfile = ''
+    [features]
+    default_mode_request_user_input = true
+  '';
+
+  # Home-relative path -> managed agent content.
   targets = {
     ".claude-work/CLAUDE.md" = guidance;
     ".claude-personal/CLAUDE.md" = guidance;
     ".codex-work/AGENTS.md" = guidance;
     ".codex-personal/AGENTS.md" = guidance;
+    ".codex-work/nix.config.toml" = codexProfile;
+    ".codex-personal/nix.config.toml" = codexProfile;
   };
 in
 {
