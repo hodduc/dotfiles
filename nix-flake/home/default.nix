@@ -75,5 +75,6 @@
     ./programs/direnv.nix
     ./programs/lima.nix
     ./programs/ai-agents.nix
+    ./programs/claude-code.nix
   ];
 }
