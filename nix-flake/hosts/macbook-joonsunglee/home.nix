@@ -3,6 +3,6 @@
 {
   imports = [
     ../../home/default.nix
-    (inputs.private + "/nix/devsisters.nix")
+    inputs.private.homeModules.devsisters
   ];
 }
