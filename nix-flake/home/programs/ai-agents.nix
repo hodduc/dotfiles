@@ -24,6 +24,19 @@ let
       alternatives and must not be presented through a multiple-choice request
       tool.
 
+    ## Commit Messages
+
+    - Write commit subjects in the `scope: description` style used by the
+      Linux kernel, Go, and Git projects: a short scope (subsystem,
+      directory, or component name), a colon, then a concise imperative
+      description. Example: `nix-flake: pin mise to avoid cache miss`.
+    - NEVER use Conventional Commits prefixes (`feat:`, `fix:`, `chore:`,
+      `refactor:`, `feat(scope):`, and the like). When unsure, the default
+      on this machine is always `scope: description`.
+    - Exception: if a repository's own commit history or contribution docs
+      clearly mandate a different convention (e.g. commitlint-enforced
+      Conventional Commits), follow that repository's convention instead.
+
     ## Operating Constraints
 
     - **Do not read outside the working directory without permission.** This
