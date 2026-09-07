@@ -70,21 +70,29 @@ let
       the user first.
   '';
 
-  codexProfile = ''
+  codexBase = ''
     [features]
     default_mode_request_user_input = true
   '';
 
-  # Home-relative path -> managed agent content.
-  targets = {
+  # Home-relative path -> managed agent instructions.
+  instructionTargets = {
     ".claude-work/CLAUDE.md" = guidance;
     ".claude-personal/CLAUDE.md" = guidance;
     ".codex-work/AGENTS.md" = guidance;
     ".codex-personal/AGENTS.md" = guidance;
-    ".codex-work/nix.config.toml" = codexProfile;
-    ".codex-personal/nix.config.toml" = codexProfile;
+  };
+
+  codexBaseTargets = {
+    ".codex-work/config.toml" = codexBase;
+    ".codex-personal/config.toml" = codexBase;
   };
 in
 {
-  home.file = lib.mapAttrs (_: text: { inherit text; }) targets;
+  home.file =
+    lib.mapAttrs (_: text: { inherit text; }) instructionTargets
+    // lib.mapAttrs (_: text: {
+      inherit text;
+      force = true;
+    }) codexBaseTargets;
 }

@@ -47,8 +47,8 @@
 
       # Codex with separate config dirs
       codex = "echo 'Use codex-work or codex-personal instead.' && return 1";
-      codex-work = "CODEX_HOME=~/.codex-work command codex --profile nix";
-      codex-personal = "CODEX_HOME=~/.codex-personal command codex --profile nix";
+      codex-work = "CODEX_HOME=~/.codex-work command codex --profile local";
+      codex-personal = "CODEX_HOME=~/.codex-personal command codex --profile local";
     };
     plugins = [
 #       {
