@@ -1,0 +1,20 @@
+{
+    "explorer.excludeGitIgnore": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.tabSize": 4,
+    "files.exclude": {
+        "**/generated": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "git.blame.statusBarItem.enabled": true,
+    "git.blame.editorDecoration.enabled": true,
+    "editor.formatOnSave": false,
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+    "update.mode": "none",
+    "extensions.autoCheckUpdates": false,
+    "intellij.region": "apac",
+    "intellij.dataSharing": "none"
+}
