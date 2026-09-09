@@ -80,6 +80,7 @@ in
     saml2aws
     tag
     step-cli
+    tmux
 
     # Applications
     wezterm
