@@ -43,6 +43,23 @@
         "type": "github"
       }
     },
+    "infra-scripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787543382,
+        "narHash": "sha256-OPIGKtwWeWOezBkH1UlTQhAvQLYuL45AvsZdZzCg7G8=",
+        "ref": "master",
+        "rev": "37038df63ec1ed2c8fb77d24dbe4f6fe4f6c0329",
+        "revCount": 318,
+        "type": "git",
+        "url": "ssh://git@github.com/devsisters/infra-scripts"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "ssh://git@github.com/devsisters/infra-scripts"
+      }
+    },
     "keycloak2aws": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -136,16 +153,18 @@
     },
     "private": {
       "inputs": {
+        "infra-scripts": "infra-scripts",
         "keycloak2aws": "keycloak2aws",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1787795959,
-        "narHash": "sha256-7TQ+KOAax7HlubICApTPfWLB6Uy7jC7/sU8gtiMmeKM=",
-        "rev": "3f8c3335a4433a59c4a8c5dcef3f4c90f9edb963",
-        "revCount": 11,
+        "lastModified": 1789718746,
+        "narHash": "sha256-3tvsKT3dH8Pp7543lGtFmQowEHnXL2Yjk6S6om/e2Ao=",
+        "ref": "refs/heads/main",
+        "rev": "dcad467d7bcc3d0e6eed18ed24d98de8e3d40dd4",
+        "revCount": 12,
         "type": "git",
         "url": "file:./private"
       },
