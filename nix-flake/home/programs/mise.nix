@@ -17,6 +17,6 @@ in
   home.file.".config/mise/conf.d/nix-defaults.toml".text = ''
     [settings]
     minimum_release_age = "7d"
-    minimum_release_age_excludes = ["claude", "codex"]
+    minimum_release_age_excludes = ["claude-code", "codex"]
   '';
 }
