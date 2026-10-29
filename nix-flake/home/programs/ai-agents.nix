@@ -73,6 +73,9 @@ let
   codexBase = ''
     [features]
     default_mode_request_user_input = true
+
+    [sandbox_workspace_write]
+    network_access = true
   '';
 
   # Home-relative path -> managed agent instructions.
