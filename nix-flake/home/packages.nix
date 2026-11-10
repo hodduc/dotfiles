@@ -7,6 +7,18 @@ let
     config.allowUnfree = true;
   };
 
+  codexbar = pkgs-unstable.codexbar.overrideAttrs (old: rec {
+    version = "0.84.0";
+    src = pkgs.fetchurl {
+      url = "https://github.com/steipete/CodexBar/releases/download/v${version}/CodexBar-macos-universal-${version}.zip";
+      hash = "sha256-wdovqqlgj4eYMGwwCATTcgeCZW+VXXNtGLysR2t37Sw=";
+    };
+    postInstall = (old.postInstall or "") + ''
+      rm "$out/bin/codexbar"
+      makeWrapper "$out/Applications/CodexBar.app/Contents/Helpers/CodexBarCLI" "$out/bin/codexbar"
+    '';
+  });
+
   # codex pre-built binary (building from source takes too long)
   # NOTE: temporarily disabled — using mise instead (see ~/.config/mise/config.toml)
   # codex = pkgs.stdenv.mkDerivation rec {
@@ -83,6 +95,7 @@ in
     tmux
 
     # Applications
+    codexbar
     wezterm
     ghostty-bin
   ];
