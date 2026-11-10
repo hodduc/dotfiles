@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   plugins = {
@@ -31,10 +31,4 @@ in
   # Enable fluent-korean and select its output style manually in both
   # claude-work and claude-personal after applying the Home Manager config.
   home.sessionVariables.CLAUDE_CODE_PLUGIN_SEED_DIR = "${pluginSeed}";
-
-  programs.zsh.shellAliases = {
-    claude = "echo 'Use claude-work or claude-personal instead.' && return 1";
-    claude-work = "CLAUDE_CONFIG_DIR=${config.home.homeDirectory}/.claude-work DISABLE_AUTOUPDATER=1 command claude";
-    claude-personal = "CLAUDE_CONFIG_DIR=${config.home.homeDirectory}/.claude-personal DISABLE_AUTOUPDATER=1 command claude";
-  };
 }

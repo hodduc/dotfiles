@@ -1,6 +1,9 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 let
+  claudeCmd = profile: "CLAUDE_CONFIG_DIR=${config.home.homeDirectory}/.claude-${profile} DISABLE_AUTOUPDATER=1 command claude";
+  codexCmd = profile: "CODEX_HOME=${config.home.homeDirectory}/.codex-${profile} command codex --profile local";
+
   # Global guidance applied to every AI coding-agent session
   guidance = ''
     # Agent Guidance (global)
@@ -98,4 +101,14 @@ in
       inherit text;
       force = true;
     }) codexBaseTargets;
+
+  # Each agent also gets the other agent's command for the same profile,
+  # which the cross-review skills read from CODEX_CMD / CLAUDE_CMD.
+  programs.zsh.shellAliases = {
+    claude = "echo 'Use claude-work or claude-personal instead.' && return 1";
+    codex = "echo 'Use codex-work or codex-personal instead.' && return 1";
+  } // lib.listToAttrs (lib.concatMap (profile: [
+    (lib.nameValuePair "claude-${profile}" "CODEX_CMD=${lib.escapeShellArg (codexCmd profile)} ${claudeCmd profile}")
+    (lib.nameValuePair "codex-${profile}" "CLAUDE_CMD=${lib.escapeShellArg (claudeCmd profile)} ${codexCmd profile}")
+  ]) [ "work" "personal" ]);
 }
